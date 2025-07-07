@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pauline Lu | Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&family=Fira+Code:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #111827; /* Dark background */
+            color: #E5E7EB; /* Light text */
+        }
+        .hero-bg {
+            background-image: url('https://placehold.co/1920x1080/111827/4F46E5?text=PL');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            position: relative;
+            overflow: hidden;
+        }
+        .section-title {
+            border-bottom: 2px solid #4F46E5; /* Indigo accent */
+            padding-bottom: 0.5rem;
+        }
+        .card {
+            background-color: #1F2937; /* Slightly lighter dark */
+            border: 1px solid #374151;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(79, 70, 229, 0.2), 0 4px 6px -2px rgba(79, 70, 229, 0.1);
+        }
+        .tag {
+            background-color: #374151;
+            color: #D1D5DB;
+            transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
+            display: inline-flex;
+            align-items: center;
+        }
+        .tag:hover {
+            background-color: #4F46E5;
+            color: #FFFFFF;
+            transform: translateY(-2px);
+        }
+        .skill-tag {
+            cursor: pointer;
+        }
+        .programming-tag {
+            font-family: 'Fira Code', monospace;
+            background-color: #2D3748;
+            border: 1px solid #4A5568;
+        }
+        .artistic-tag {
+            background-color: #3C3C3C;
+            border: 1px solid #5A5A5A;
+        }
+        /* Modal styles */
+        .modal {
+            transition: opacity 0.3s ease;
+        }
+        .modal-content {
+            transition: transform 0.3s ease;
+        }
+        .particle {
+            position: absolute;
+            background-color: rgba(79, 70, 229, 0.5);
+            border-radius: 50%;
+            animation: float 10s infinite ease-in-out;
+            opacity: 0;
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0) translateX(0); opacity: 0; }
+            50% { transform: translateY(-20px) translateX(10px); opacity: 1; }
+        }
+        .story-point {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        .story-point.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        /* Project Modal Styles */
+        .project-modal-content {
+            background-color: #1F2937;
+            padding: 2rem;
+            border-radius: 0.75rem;
+            max-width: 800px;
+            width: 90%;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3), 0 10px 10px -5px rgba(0, 0, 0, 0.1);
+            border: 1px solid #374151;
+        }
+        .project-card {
+            background-color: #2d3748;
+            border-left: 4px solid #4F46E5;
+        }
+        /* Tabbed interface styles */
+        .tab-button {
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            font-weight: bold;
+            background-color: #374151;
+            color: #D1D5DB;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            cursor: pointer;
+        }
+        .tab-button.active {
+            background-color: #4F46E5;
+            color: #FFFFFF;
+        }
+        .tab-content {
+            display: none;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        .tab-content.active {
+            display: grid;
+            opacity: 1;
+            transform: translateY(0);
+        }
+        /* Experience Card Timeline Styles */
+        .experience-card {
+            position: relative;
+            overflow: hidden;
+        }
+        .experience-card .timeline-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(31, 41, 55, 0.97);
+            color: #E5E7EB;
+            padding: 1.5rem;
+            opacity: 0;
+            transform: translateY(100%);
+            transition: opacity 0.4s ease, transform 0.4s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: left;
+        }
+        .experience-card:hover .timeline-overlay {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .timeline-item {
+            position: relative;
+            padding-left: 1.5rem;
+            border-left: 2px solid #4F46E5;
+        }
+        .timeline-item:not(:last-child) {
+            margin-bottom: 1rem;
+        }
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -8px;
+            top: 5px;
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background-color: #4F46E5;
+            border: 2px solid #1F2937;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header & Hero Section -->
+    <header id="home" class="hero-bg h-screen flex flex-col">
+        <nav class="bg-black bg-opacity-50 backdrop-blur-sm p-4 w-full fixed top-0 z-50">
+            <div class="container mx-auto flex justify-between items-center">
+                <a href="#home" class="text-2xl font-bold text-white">Pauline Lu</a>
+                <div class="hidden md:flex space-x-6 text-white">
+                    <a href="#about" class="hover:text-indigo-400 transition">About</a>
+                    <a href="#stats" class="hover:text-indigo-400 transition">Journey</a>
+                    <a href="#experience" class="hover:text-indigo-400 transition">My Roles</a>
+                    <a href="#skills" class="hover:text-indigo-400 transition">My Toolbox</a>
+                    <a href="#contact" class="hover:text-indigo-400 transition">Connect</a>
+                </div>
+                <button id="mobile-menu-button" class="md:hidden text-white">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                </button>
+            </div>
+        </nav>
+        <div id="mobile-menu" class="hidden md:hidden bg-black bg-opacity-70 backdrop-blur-md fixed top-16 right-0 left-0 z-40">
+            <a href="#about" class="block text-center text-white py-3 hover:bg-indigo-500 transition">About</a>
+            <a href="#stats" class="block text-center text-white py-3 hover:bg-indigo-500 transition">Journey</a>
+            <a href="#experience" class="block text-center text-white py-3 hover:bg-indigo-500 transition">My Roles</a>
+            <a href="#skills" class="block text-center text-white py-3 hover:bg-indigo-500 transition">My Toolbox</a>
+            <a href="#contact" class="block text-center text-white py-3 hover:bg-indigo-500 transition">Connect</a>
+        </div>
+        <div class="flex-grow flex items-center justify-center text-center text-white bg-black bg-opacity-40 relative z-10">
+            <div>
+                <h1 class="text-5xl md:text-7xl font-extrabold tracking-tight">Pauline Lu</h1>
+                <p class="mt-4 text-xl md:text-2xl text-gray-300">Innovative and Passionate Creative, Leader, and Storyteller</p>
+                <div class="mt-8">
+                    <a href="#about" class="inline-block bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 px-8 rounded-full transition duration-300 ease-in-out transform hover:scale-105 shadow-lg">
+                        Discover My Journey
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div id="particle-container" class="absolute inset-0 z-0"></div>
+    </header>
+
+    <main>
+        <!-- About Section -->
+        <section id="about" class="py-20 sm:py-28">
+            <div class="container mx-auto px-6 lg:px-8 max-w-4xl">
+                <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 section-title inline-block">About Me</h2>
+                <div class="flex flex-col md:flex-row items-center gap-10">
+                    <img src="https://placehold.co/400x400/1F2937/E5E7EB?text=Pauline+Lu" alt="Pauline Lu" class="w-48 h-48 rounded-full object-cover shadow-lg story-point">
+                    <div class="text-lg text-gray-300 text-center md:text-left">
+                        <p class="mb-4 story-point">
+                            I am a passionate and driven student at Calvin University, pursuing a Bachelor of Science with a unique blend of Computer Science, Entrepreneurship, and Philosophy. As an Honors Scholar, I am committed to academic excellence and leveraging technology to create innovative solutions.
+                        </p>
+                        <p class="story-point">
+                            From streamlining data management at National Heritage Academies to founding a Girls Who Code chapter on campus, I thrive on leading projects, fostering community, and driving mission-driven initiatives. My goal is to bridge the gap between technology and human-centric storytelling.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Stats Section -->
+        <section id="stats" class="py-20 sm:py-28 bg-gray-900">
+            <div class="container mx-auto px-6 lg:px-8 text-center">
+                <h2 class="text-3xl md:text-4xl font-bold mb-16 section-title inline-block">My Story in Numbers:</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
+                    <div class="card p-8 rounded-lg story-point"><p class="text-5xl font-extrabold text-indigo-400" data-target="4200">0</p><p class="mt-2 text-lg text-gray-300">Students & Community Members Advocated For</p></div>
+                    <div class="card p-8 rounded-lg story-point"><p class="text-5xl font-extrabold text-indigo-400" data-target="50">0</p><p class="mt-2 text-lg text-gray-300">Community Partnerships Cultivated</p></div>
+                    <div class="card p-8 rounded-lg story-point"><p class="text-5xl font-extrabold text-indigo-400" data-target="25">0</p><p class="mt-2 text-lg text-gray-300">Events & Programs Executed</p></div>
+                    <div class="card p-8 rounded-lg story-point"><p class="text-5xl font-extrabold text-indigo-400" data-target="150">0</p><p class="mt-2 text-lg text-gray-300">People Led & Mentored</p></div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Experience Section -->
+        <section id="experience" class="py-20 sm:py-28">
+            <div class="container mx-auto px-6 lg:px-8">
+                <h2 class="text-3xl md:text-4xl font-bold text-center mb-16 section-title inline-block">My Roles: Starter, Leader, Learner, Connector</h2>
+                <p class="text-lg text-gray-300 text-center mb-12 max-w-3xl mx-auto story-point">
+                    My journey is defined by the diverse hats I've worn, from initiating new ventures to leading teams, continuously learning, and building vital connections. Click on a role to explore my experiences.
+                </p>
+                <div class="flex flex-wrap justify-center gap-4 mb-12">
+                    <button class="tab-button active" data-tab="starter">Starter</button>
+                    <button class="tab-button" data-tab="leader">Leader</button>
+                    <button class="tab-button" data-tab="learner">Learner</button>
+                    <button class="tab-button" data-tab="connector">Connector</button>
+                </div>
+                <!-- Tab Content Areas -->
+                <div id="starter-content" class="tab-content active md:grid-cols-2 lg:grid-cols-3 gap-8"></div>
+                <div id="leader-content" class="tab-content md:grid-cols-2 lg:grid-cols-3 gap-8"></div>
+                <div id="learner-content" class="tab-content md:grid-cols-2 lg:grid-cols-3 gap-8"></div>
+                <div id="connector-content" class="tab-content md:grid-cols-2 lg:grid-cols-3 gap-8"></div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills" class="py-20 sm:py-28 bg-gray-900">
+            <div class="container mx-auto px-6 lg:px-8">
+                <h2 class="text-3xl md:text-4xl font-bold text-center mb-16 section-title inline-block">My Toolbox</h2>
+                <div class="max-w-4xl mx-auto text-center">
+                    <p class="text-lg text-gray-300 mb-8 story-point">Click on a skill to see related projects and experiences.</p>
+                    <div class="mb-12">
+                        <h3 class="text-2xl font-semibold text-white mb-6">Programming Languages & Tools</h3>
+                        <div class="flex flex-wrap gap-4 justify-center" id="programming-skills">
+                            <span class="tag programming-tag skill-tag rounded-full px-5 py-2 text-base font-medium" data-skill="python">Python</span>
+                            <span class="tag programming-tag skill-tag rounded-full px-5 py-2 text-base font-medium" data-skill="sql">SQL</span>
+                            <span class="tag programming-tag skill-tag rounded-full px-5 py-2 text-base font-medium" data-skill="javascript">JavaScript</span>
+                            <span class="tag programming-tag skill-tag rounded-full px-5 py-2 text-base font-medium" data-skill="html_css">HTML/CSS</span>
+                            <span class="tag programming-tag skill-tag rounded-full px-5 py-2 text-base font-medium" data-skill="java">Java</span>
+                            <span class="tag programming-tag skill-tag rounded-full px-5 py-2 text-base font-medium" data-skill="cplusplus">C++</span>
+                            <span class="tag programming-tag skill-tag rounded-full px-5 py-2 text-base font-medium" data-skill="csharp">C#</span>
+                            <span class="tag programming-tag skill-tag rounded-full px-5 py-2 text-base font-medium" data-skill="matlab">MATLAB</span>
+                            <span class="tag programming-tag skill-tag rounded-full px-5 py-2 text-base font-medium" data-skill="ruby">Ruby</span>
+                            <span class="tag programming-tag skill-tag rounded-full px-5 py-2 text-base font-medium" data-skill="ada">Ada</span>
+                            <span class="tag programming-tag skill-tag rounded-full px-5 py-2 text-base font-medium" data-skill="clojure">Clojure</span>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="text-2xl font-semibold text-white mb-6">Artistic & Design</h3>
+                        <div class="flex flex-wrap gap-4 justify-center" id="artistic-skills">
+                            <span class="tag artistic-tag skill-tag rounded-full px-5 py-2 text-base font-medium" data-skill="photography">Photography</span>
+                            <span class="tag artistic-tag skill-tag rounded-full px-5 py-2 text-base font-medium" data-skill="digital_design">Digital Design</span>
+                            <span class="tag artistic-tag skill-tag rounded-full px-5 py-2 text-base font-medium" data-skill="lightroom">Adobe Lightroom</span>
+                            <span class="tag artistic-tag skill-tag rounded-full px-5 py-2 text-base font-medium" data-skill="photoshop">Adobe Photoshop</span>
+                            <span class="tag artistic-tag skill-tag rounded-full px-5 py-2 text-base font-medium" data-skill="canva">Canva</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="py-20 sm:py-28">
+            <div class="container mx-auto px-6 lg:px-8 text-center max-w-3xl">
+                <h2 class="text-3xl md:text-4xl font-bold mb-6 section-title inline-block">Let's Connect & Create</h2>
+                <p class="text-lg text-gray-300 mb-8 story-point">
+                    I'm always open to discussing new projects, creative ideas, or opportunities to be part of an ambitious vision. Reach out and let's tell a new story together.
+                </p>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-gray-800 py-8">
+        <div class="container mx-auto px-6 lg:px-8 text-center text-gray-400">
+            <p>&copy; <span id="year"></span> Pauline Lu. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Project Modal -->
+    <div id="projectModal" class="modal fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center p-4 z-50 opacity-0 pointer-events-none">
+        <div class="project-modal-content transform scale-95 max-h-[90vh] overflow-y-auto">
+            <div class="flex justify-between items-center mb-6">
+                <h3 id="projectModalTitle" class="text-3xl font-bold text-white">Projects</h3>
+                <button onclick="closeProjectModal()" class="text-gray-400 hover:text-white text-4xl font-bold">&times;</button>
+            </div>
+            <div id="projectModalBody" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Project cards will be injected here by JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // --- DATA STORE ---
+        const projectData = {
+            python: { name: 'Python', projects: [ { title: 'IT Systems Automation', description: 'Streamlined data management for 100+ schools by automating critical daily processes using Python, SQL, and Docker at National Heritage Academies.' }, { title: 'Cybersecurity & Cryptography', description: 'Completed a comprehensive course series in Cybersecurity and Cryptography using Python as part of the Girls Who Code Self-Paced Program.' }, { title: 'Data Science For Good', description: 'Utilized Python in data science projects focused on social impact, covering data analysis, visualization, and modeling with Girls Who Code.' } ] },
+            sql: { name: 'SQL', projects: [ { title: 'Enterprise Database Management', description: 'Utilized SQL to perform database management and streamline data processes with Oracle and OnBase systems during an IT & ERP Systems internship at National Heritage Academies.' } ] },
+            javascript: { name: 'JavaScript', projects: [ { title: 'Interactive Web Development', description: 'Learned and implemented web development with HTML, CSS, and JavaScript in the Girls Who Code Summer Immersion Program.' }, { title: 'Web Project Portfolio', description: 'Designed and coded a personal website, a digital interactive quiz, and an advocacy website using modern web technologies.' } ] },
+            html_css: { name: 'HTML/CSS', projects: [ { title: 'User-Friendly OnBase Forms', description: 'Converted and created 5+ user-friendly HTML forms for the OnBase enterprise information platform at National Heritage Academies.' }, { title: 'Web Development Foundations', description: 'Built multiple websites and web applications, focusing on structure (HTML) and styling (CSS) with Girls Who Code.' } ] },
+            matlab: { name: 'MATLAB', projects: [ { title: 'The Science Behind Sunsets', description: 'Received the Outstanding Junior Project Award for a project that studied and simulated the effects of atmospheric particles on the colorization of sunsets. Coded a MATLAB simulator with a location-based sun-position graph.' } ] },
+            java: { name: 'Java', projects: [{ title: 'Programming Languages Coursework', description: 'Completed 12 labs and 11 projects in Java, Ruby, Ada, and Clojure for the CS214: Programming Languages course, focusing on different programming paradigms.' }] },
+            ruby: { name: 'Ruby', projects: [{ title: 'Programming Languages Coursework', description: 'Completed 12 labs and 11 projects in Java, Ruby, Ada, and Clojure for the CS214: Programming Languages course, focusing on different programming paradigms.' }] },
+            ada: { name: 'Ada', projects: [{ title: 'Programming Languages Coursework', description: 'Completed 12 labs and 11 projects in Java, Ruby, Ada, and Clojure for the CS214: Programming Languages course, focusing on different programming paradigms.' }] },
+            clojure: { name: 'Clojure', projects: [{ title: 'Programming Languages Coursework', description: 'Completed 12 labs and 11 projects in Java, Ruby, Ada, and Clojure for the CS214: Programming Languages course, focusing on different programming paradigms.' }] },
+            cplusplus: { name: 'C++', projects: [{ title: 'University Coursework', description: 'Developed foundational and advanced programming skills through various C++ projects and assignments in university computer science courses.' }] },
+            csharp: { name: 'C#', projects: [{ title: 'University Coursework', description: 'Developed foundational and advanced programming skills through various C# projects and assignments in university computer science courses.' }] },
+            photography: { name: 'Photography', projects: [ { title: 'Published Hobbyist Photographer', description: 'Published hobby photographer with over 600,000 views on Unsplash, specializing in landscape and travel photography.' } ] },
+            digital_design: { name: 'Digital Design', projects: [ { title: 'Yearbook Editor in Chief', description: 'Led the design and creation of complex graphic elements, layouts, and cover art for the yearbook using tools like Adobe Photoshop.' }, { title: 'VP of Marketing & Communication', description: 'Designed digital graphics, posters, and social media content to promote senate events and initiatives using Canva and the Adobe Suite.' } ] },
+            lightroom: { name: 'Adobe Lightroom', projects: [ { title: 'Yearbook Editor in Chief', description: 'Utilized Adobe Lightroom for professional-grade photo editing and color correction for all images in the annual yearbook.' }, { title: 'VP of Marketing & Communication', description: 'Edited and enhanced photos for social media campaigns and promotional materials for the Student Senate.' } ] },
+            photoshop: { name: 'Adobe Photoshop', projects: [ { title: 'Yearbook Editor in Chief', description: 'Led the design and creation of complex graphic elements, layouts, and cover art for the yearbook using Adobe Photoshop.' }, { title: 'VP of Marketing & Communication', description: 'Designed digital graphics, posters, and social media content to promote senate events and initiatives.' } ] },
+            canva: { name: 'Canva', projects: [ { title: 'VP of Marketing & Communication', description: 'Created accessible and engaging marketing materials, presentations, and social media graphics for the Student Senate using Canva.' }, { title: 'Yearbook Editor in Chief', description: 'Used Canva for quick-turnaround graphics, promotional materials for the yearbook, and collaborative design tasks.' } ] }
+        };
+
+        const experienceData = {
+            starter: [
+                { title: 'Founder & President', org: 'Girls Who Code College Loop', date: '2023 - Present', desc: 'Organized and led a 50+ member community to close the gender gap in computing by providing resources, programming, and a community that empowers and educates women in coding. Oversee mentorship pairings, connect with and host alumni and professionals, and lead coding projects.' },
+                { title: 'Co-founder & Instructor', org: 'LeadTheWay Summer Program', date: 'Summer 2024', desc: 'Created a summer program for middle schoolers to develop public speaking, critical thinking, leadership, debate and writing skills through STEM exploration.' },
+                { title: 'Co-Founder, Chapter Leader', org: 'Reading For Fun Organization', date: '2020 - Present', desc: 'Grew to 20 chapters globally with 100+ students. Created, implemented, and led lesson plans for a chapter of 30+ international students through 40+ books to develop creativity, critical thinking, communication, and collaboration skills.' }
+            ],
+            leader: [
+                { title: 'Residential Hall President', org: 'Calvin University', date: '2024 - Present', desc: 'Led and managed a team to plan and execute events, programs, and services that foster community and belonging for 450+ residents. Oversee budgeting, marketing, and logistics, collaborate with campus organizations, and facilitate open communication.' },
+                {
+                    current: { title: 'VP of Marketing & Communication', org: 'Calvin University Student Senate', date: '2025 - Present', desc: 'Lead marketing campaigns and communication strategies to enhance student engagement and transparency across campus.' },
+                    history: [
+                        { title: 'Senator', org: 'Calvin University Student Senate', date: '2023 - 2025', desc: 'Represented and advocated for the student body to achieve positive change. Worked closely with university administration on Governance Committees to tackle concerns and enhance the student experience.' }
+                    ]
+                }
+            ],
+            learner: [
+                { title: 'IT ERP & Business Systems Intern', org: 'National Heritage Academies', date: 'Summer 2025', desc: 'Streamlined data management for 100+ schools by automating critical daily processes using SQL, Python, and Docker, gaining hands-on experience in enterprise systems.' },
+                {
+                    current: { title: 'Lead Software Developer', org: 'Nowhere Collective', date: '2025 - Present', desc: 'Restructured systems for enhanced performance and scalability, designed user interface experience, and self-directed projects for start-up’s application.' },
+                    history: [
+                        { title: 'Outreach Coordinator Intern', org: 'Nowhere Collective', date: '2025', desc: 'Developed and executed community engagement strategies, cultivating 50+ partnerships for mission-driven initiatives, learning about non-profit operations and outreach.' }
+                    ]
+                },
+                { title: 'Work Prep Participant', org: 'Girls Who Code & Bank of America', date: 'July 2024', desc: 'Participated in a three-week career readiness program focused on technical roles in consulting, gaining insights into transferable skills, project approaches, and growth mindset.' },
+            ],
+            connector: [
+                 {
+                    current: { title: 'University Guide', org: 'Calvin University Admissions', date: '2023 - Present', desc: 'Represent the institution by enthusiastically connecting with prospective students and their families, guiding them through campus and sharing personal experiences to foster a welcoming environment.' },
+                    history: [
+                        { title: 'Student Caller', org: 'Calvin University Admissions', date: '2023 - 2024', desc: 'Initiated contact with prospective students, shared key information about the university, and meticulously logged valuable data in the admissions database.' }
+                    ]
+                 },
+                 { title: 'Activities Coordinator', org: 'Carnegie Assisted Living', date: 'Summer 2023, 2024', desc: 'Created engaging and stimulating activities for people with memory loss, patiently practicing adaptability and building relationships to foster a positive atmosphere.' },
+            ]
+        };
+
+        // --- GENERAL SETUP & EVENT LISTENERS ---
+        document.addEventListener('DOMContentLoaded', () => {
+            // Mobile Menu
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenuButton.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+            document.querySelectorAll('#mobile-menu a, nav a').forEach(link => {
+                link.addEventListener('click', () => {
+                    if (link.parentElement.id === 'mobile-menu') {
+                        mobileMenu.classList.add('hidden');
+                    }
+                });
+            });
+
+            // Footer Year
+            document.getElementById('year').textContent = new Date().getFullYear();
+
+            // Project Modal
+            const projectModal = document.getElementById('projectModal');
+            const projectModalTitle = document.getElementById('projectModalTitle');
+            const projectModalBody = document.getElementById('projectModalBody');
+            
+            function openProjectModal(skillKey) {
+                const skillInfo = projectData[skillKey];
+                if (!skillInfo || !skillInfo.projects) return;
+                projectModalTitle.textContent = `${skillInfo.name} Projects`;
+                projectModalBody.innerHTML = '';
+                skillInfo.projects.forEach(project => {
+                    const card = document.createElement('div');
+                    card.className = 'project-card p-6 rounded-lg';
+                    card.innerHTML = `<h4 class="text-xl font-bold text-white mb-2">${project.title}</h4><p class="text-gray-300 text-sm">${project.description}</p>`;
+                    projectModalBody.appendChild(card);
+                });
+                projectModal.classList.remove('opacity-0', 'pointer-events-none');
+                document.body.style.overflow = 'hidden';
+                setTimeout(() => projectModal.querySelector('.project-modal-content').classList.remove('scale-95'), 10);
+            }
+
+            function closeProjectModal() {
+                projectModal.querySelector('.project-modal-content').classList.add('scale-95');
+                setTimeout(() => {
+                    projectModal.classList.add('opacity-0', 'pointer-events-none');
+                    document.body.style.overflow = 'auto';
+                }, 300);
+            }
+            
+            document.querySelectorAll('.skill-tag').forEach(tag => tag.addEventListener('click', () => openProjectModal(tag.dataset.skill)));
+            projectModal.addEventListener('click', e => { if (e.target === projectModal) closeProjectModal(); });
+            window.addEventListener('keydown', e => { if (e.key === 'Escape') closeProjectModal(); });
+
+            // Particle Effect
+            const particleContainer = document.getElementById('particle-container');
+            if (particleContainer) {
+                setInterval(() => {
+                    const particle = document.createElement('div');
+                    particle.classList.add('particle');
+                    const size = Math.random() * 10 + 5;
+                    particle.style.width = `${size}px`; particle.style.height = `${size}px`;
+                    particle.style.left = `${Math.random() * 100}%`; particle.style.top = `${Math.random() * 100}%`;
+                    particle.style.animationDuration = `${Math.random() * 5 + 5}s`;
+                    particle.style.animationDelay = `-${Math.random() * 5}s`;
+                    particleContainer.appendChild(particle);
+                    particle.addEventListener('animationend', () => particle.remove());
+                }, 300);
+            }
+
+            // Animation Observers
+            const observer = new IntersectionObserver(entries => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        if (entry.target.hasAttribute('data-target')) {
+                            const el = entry.target;
+                            const target = parseInt(el.dataset.target);
+                            let current = 0;
+                            const timer = setInterval(() => {
+                                current += target / 125; // 2000ms / 16ms
+                                if (current >= target) {
+                                    clearInterval(timer);
+                                    current = target;
+                                }
+                                el.textContent = Math.floor(current).toLocaleString();
+                            }, 16);
+                        } else {
+                            entry.target.classList.add('active');
+                        }
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1 });
+            document.querySelectorAll('.story-point, [data-target]').forEach(el => observer.observe(el));
+
+            // Tabbed Experience Section
+            const tabButtons = document.querySelectorAll('.tab-button');
+            const tabContents = document.querySelectorAll('.tab-content');
+
+            Object.keys(experienceData).forEach(key => {
+                const container = document.getElementById(`${key}-content`);
+                if (container) {
+                    experienceData[key].forEach(item => {
+                        const card = document.createElement('div');
+                        if (item.current && item.history) {
+                            card.className = 'card p-6 rounded-lg story-point experience-card';
+                            let historyHtml = item.history.map(hist => `<div class="timeline-item"><h5 class="font-bold text-white">${hist.title}</h5><p class="text-sm text-indigo-300 font-medium">${hist.org} | ${hist.date}</p><p class="text-sm text-gray-300 mt-1">${hist.desc}</p></div>`).join('');
+                            card.innerHTML = `<div><h3 class="text-xl font-bold text-white">${item.current.title}</h3><p class="text-indigo-400 font-medium">${item.current.org}</p><p class="text-sm text-gray-400 mb-3">${item.current.date}</p><p class="text-gray-300">${item.current.desc}</p></div><div class="timeline-overlay"><div><h4 class="text-lg font-bold text-center mb-4">Role History</h4>${historyHtml}</div></div>`;
+                        } else {
+                            card.className = 'card p-6 rounded-lg story-point';
+                            card.innerHTML = `<h3 class="text-xl font-bold text-white">${item.title}</h3><p class="text-indigo-400 font-medium">${item.org}</p><p class="text-sm text-gray-400 mb-3">${item.date}</p><p class="text-gray-300">${item.desc}</p>`;
+                        }
+                        container.appendChild(card);
+                        observer.observe(card);
+                    });
+                }
+            });
+
+            function showTab(tabId) {
+                tabButtons.forEach(b => b.classList.remove('active'));
+                tabContents.forEach(c => { c.classList.remove('active'); c.style.display = 'none'; });
+                document.querySelector(`.tab-button[data-tab="${tabId}"]`).classList.add('active');
+                const activeContent = document.getElementById(`${tabId}-content`);
+                if (activeContent) {
+                    activeContent.style.display = 'grid';
+                    setTimeout(() => activeContent.classList.add('active'), 10);
+                }
+            }
+
+            tabButtons.forEach(button => button.addEventListener('click', () => showTab(button.dataset.tab)));
+            if (tabButtons.length > 0) showTab(tabButtons[0].dataset.tab);
+        });
+    </script>
+
+</body>
+</html>
