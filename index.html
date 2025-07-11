@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,40 +7,31 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&family=Fira+Code:wght@400;500;700&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&family=Fira+Code:wght@400;500;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome for icons - Updated to a stable version 6.5.2 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" xintegrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta8gpp9+5xkbyxFXQ+ERgSsW0g/acJ2VqgVf3v/WkF/9g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <style>
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #030712;
-            /* Even darker gray for contrast */
-            color: #E5E7EB;
-            /* Light text */
+            background-color: #030712; /* Even darker gray for contrast */
+            color: #E5E7EB; /* Light text */
         }
-
         .main-content {
             background-color: #111827;
         }
-
         .section-title {
-            border-bottom: 2px solid #4F46E5;
-            /* Indigo accent */
+            border-bottom: 2px solid #4F46E5; /* Indigo accent */
             padding-bottom: 0.5rem;
         }
-
         .card {
-            background-color: #1F2937;
-            /* Slightly lighter dark */
+            background-color: #1F2937; /* Slightly lighter dark */
             border: 1px solid #374151;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
-
         .card:hover {
             transform: translateY(-5px);
             box-shadow: 0 10px 15px -3px rgba(79, 70, 229, 0.2), 0 4px 6px -2px rgba(79, 70, 229, 0.1);
         }
-
         .tag {
             background-color: #374151;
             color: #D1D5DB;
@@ -49,48 +39,39 @@
             display: inline-flex;
             align-items: center;
         }
-
         .tag:hover {
             background-color: #4F46E5;
             color: #FFFFFF;
             transform: translateY(-2px);
         }
-
         .skill-tag {
             cursor: pointer;
         }
-
         .programming-tag {
             font-family: 'Fira Code', monospace;
             background-color: #2D3748;
             border: 1px solid #4A5568;
         }
-
         .artistic-tag {
             background-color: #3C3C3C;
             border: 1px solid #5A5A5A;
         }
-
         /* Modal styles */
         .modal {
             transition: opacity 0.3s ease;
         }
-
         .modal-content {
             transition: transform 0.3s ease;
         }
-
         .story-point {
             opacity: 0;
             transform: translateY(20px);
             transition: opacity 0.6s ease-out, transform 0.6s ease-out;
         }
-
         .story-point.active {
             opacity: 1;
             transform: translateY(0);
         }
-
         /* Project Modal Styles */
         .project-modal-content {
             background-color: #1F2937;
@@ -101,12 +82,10 @@
             box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3), 0 10px 10px -5px rgba(0, 0, 0, 0.1);
             border: 1px solid #374151;
         }
-
         .project-card {
             background-color: #2d3748;
             border-left: 4px solid #4F46E5;
         }
-
         /* Tabbed interface styles */
         .tab-button {
             padding: 0.5rem 1rem;
@@ -117,31 +96,26 @@
             transition: background-color 0.3s ease, color 0.3s ease;
             cursor: pointer;
         }
-
         .tab-button.active {
             background-color: #4F46E5;
             color: #FFFFFF;
         }
-
         .tab-content {
             display: none;
             opacity: 0;
             transform: translateY(20px);
             transition: opacity 0.6s ease-out, transform 0.6s ease-out;
         }
-
         .tab-content.active {
             display: grid;
             opacity: 1;
             transform: translateY(0);
         }
-
         /* Experience Card Timeline Styles */
         .experience-card {
             position: relative;
             overflow: hidden;
         }
-
         .experience-card .timeline-overlay {
             position: absolute;
             top: 0;
@@ -160,22 +134,18 @@
             align-items: center;
             text-align: left;
         }
-
         .experience-card:hover .timeline-overlay {
             opacity: 1;
             transform: translateY(0);
         }
-
         .timeline-item {
             position: relative;
             padding-left: 1.5rem;
             border-left: 2px solid #4F46E5;
         }
-
         .timeline-item:not(:last-child) {
             margin-bottom: 1rem;
         }
-
         .timeline-item::before {
             content: '';
             position: absolute;
@@ -189,50 +159,45 @@
         }
     </style>
 </head>
-
 <body class="lg:grid lg:grid-cols-12 lg:gap-8">
 
     <header class="lg:col-span-4 lg:sticky lg:top-0 lg:h-screen flex flex-col justify-between p-8 sm:p-12">
         <div>
             <div class="text-center lg:text-left">
-                <img src="images/profilepic.png" alt="Pauline Lu Profile" class="w-32 h-32 rounded-full mx-auto lg:mx-0 shadow-lg mb-6">
+                <img src="https://placehold.co/150x150/1F2937/E5E7EB?text=Pauline+Lu" alt="Pauline Lu Profile" class="w-32 h-32 rounded-full mx-auto lg:mx-0 shadow-lg mb-6">
                 <h1 class="text-4xl font-extrabold text-white">Pauline Lu</h1>
                 <p class="mt-2 text-lg text-indigo-400">innovative & passionate leader, creative, & storyteller</p>
                 <p class="mt-4 text-gray-400">
                     I am passionate about using technology to connect people and communities!
                 </p>
             </div>
-
+            
             <div class="mt-8 text-sm text-gray-300 space-y-2 text-center lg:text-left">
                 <p><strong>University:</strong> Calvin University</p>
                 <p><strong>Major:</strong> Computer Science, Entrepreneurship, Philosophy</p>
                 <p><strong>Expected Graduation:</strong> May 2027</p>
                 <p><strong>Email:</strong> pauline.lu@example.com</p>
             </div>
-
+            
             <nav class="hidden lg:block mt-8">
                 <ul class="space-y-2">
-                    <li><a href="#about" class="block py-2 text-gray-400 hover:text-white transition group"><span
-                                class="inline-block mr-4 h-px w-8 bg-gray-600 transition-all group-hover:w-16 group-hover:bg-white"></span>About</a>
-                    </li>
-                    <li><a href="#stats" class="block py-2 text-gray-400 hover:text-white transition group"><span
-                                class="inline-block mr-4 h-px w-8 bg-gray-600 transition-all group-hover:w-16 group-hover:bg-white"></span>Journey</a>
-                    </li>
-                    <li><a href="#experience" class="block py-2 text-gray-400 hover:text-white transition group"><span
-                                class="inline-block mr-4 h-px w-8 bg-gray-600 transition-all group-hover:w-16 group-hover:bg-white"></span>My
-                            Roles</a></li>
-                    <li><a href="#skills" class="block py-2 text-gray-400 hover:text-white transition group"><span
-                                class="inline-block mr-4 h-px w-8 bg-gray-600 transition-all group-hover:w-16 group-hover:bg-white"></span>My
-                            Toolbox</a></li>
-                    <li><a href="#contact" class="block py-2 text-gray-400 hover:text-white transition group"><span
-                                class="inline-block mr-4 h-px w-8 bg-gray-600 transition-all group-hover:w-16 group-hover:bg-white"></span>Connect</a>
-                    </li>
+                    <li><a href="#about" class="block py-2 text-gray-400 hover:text-white transition group"><span class="inline-block mr-4 h-px w-8 bg-gray-600 transition-all group-hover:w-16 group-hover:bg-white"></span>About</a></li>
+                    <li><a href="#stats" class="block py-2 text-gray-400 hover:text-white transition group"><span class="inline-block mr-4 h-px w-8 bg-gray-600 transition-all group-hover:w-16 group-hover:bg-white"></span>Journey</a></li>
+                    <li><a href="#experience" class="block py-2 text-gray-400 hover:text-white transition group"><span class="inline-block mr-4 h-px w-8 bg-gray-600 transition-all group-hover:w-16 group-hover:bg-white"></span>My Roles</a></li>
+                    <li><a href="#skills" class="block py-2 text-gray-400 hover:text-white transition group"><span class="inline-block mr-4 h-px w-8 bg-gray-600 transition-all group-hover:w-16 group-hover:bg-white"></span>My Toolbox</a></li>
+                    <li><a href="#contact" class="block py-2 text-gray-400 hover:text-white transition group"><span class="inline-block mr-4 h-px w-8 bg-gray-600 transition-all group-hover:w-16 group-hover:bg-white"></span>Connect</a></li>
                 </ul>
             </nav>
         </div>
 
         <footer class="mt-8 text-center lg:text-left text-gray-500 text-sm">
             <p>&copy; <span id="year"></span> Pauline Lu. All Rights Reserved.</p>
+            <!-- LinkedIn Icon -->
+            <div class="mt-4 flex justify-center lg:justify-start space-x-4">
+                <a href="https://www.linkedin.com/in/pauline-lu-934909209/" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-indigo-400 transition-colors duration-300">
+                    <i class="fab fa-linkedin fa-2x"></i>
+                </a>
+            </div>
         </footer>
     </header>
 
@@ -242,45 +207,29 @@
                 <h2 class="text-3xl font-bold mb-8 section-title inline-block">About Me</h2>
                 <div class="text-lg text-gray-300 space-y-4">
                     <p>
-                        As an Honors Scholar at Calvin University, I am pursuing a unique blend of Computer Science,
-                        Entrepreneurship, and Philosophy. I am committed to leveraging technology to create innovative,
-                        human-centric solutions.
+                        As an Honors Scholar at Calvin University, I am pursuing a unique blend of Computer Science, Entrepreneurship, and Philosophy. I am committed to leveraging technology to create innovative, human-centric solutions.
                     </p>
                     <p>
-                        My experience ranges from streamlining data management for 100+ schools to founding a Girls Who
-                        Code chapter, reflecting my passion for leading projects that drive mission-driven initiatives
-                        and foster community.
+                        My experience ranges from streamlining data management for 100+ schools to founding a Girls Who Code chapter, reflecting my passion for leading projects that drive mission-driven initiatives and foster community.
                     </p>
                 </div>
             </section>
-
+    
             <section id="stats" class="py-10 sm:py-16">
                 <h2 class="text-3xl font-bold mb-12 section-title inline-block">My Story in Numbers</h2>
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                    <div class="card p-6 rounded-lg story-point text-center">
-                        <p class="text-4xl lg:text-5xl font-extrabold text-indigo-400" data-target="4200">0</p>
-                        <p class="mt-2 text-base text-gray-300">Students Advocated For</p>
-                    </div>
-                    <div class="card p-6 rounded-lg story-point text-center">
-                        <p class="text-4xl lg:text-5xl font-extrabold text-indigo-400" data-target="50">0</p>
-                        <p class="mt-2 text-base text-gray-300">Partnerships Cultivated</p>
-                    </div>
-                    <div class="card p-6 rounded-lg story-point text-center">
-                        <p class="text-4xl lg:text-5xl font-extrabold text-indigo-400" data-target="25">0</p>
-                        <p class="mt-2 text-base text-gray-300">Events Executed</p>
-                    </div>
-                    <div class="card p-6 rounded-lg story-point text-center">
-                        <p class="text-4xl lg:text-5xl font-extrabold text-indigo-400" data-target="150">0</p>
-                        <p class="mt-2 text-base text-gray-300">People Mentored</p>
-                    </div>
+                    <div class="card p-6 rounded-lg story-point text-center"><p class="text-4xl lg:text-5xl font-extrabold text-indigo-400" data-target="4200">0</p><p class="mt-2 text-base text-gray-300">Students Advocated For</p></div>
+                    <div class="card p-6 rounded-lg story-point text-center"><p class="text-4xl lg:text-5xl font-extrabold text-indigo-400" data-target="50">0</p><p class="mt-2 text-base text-gray-300">Partnerships Cultivated</p></div>
+                    <div class="card p-6 rounded-lg story-point text-center"><p class="text-4xl lg:text-5xl font-extrabold text-indigo-400" data-target="25">0</p><p class="mt-2 text-base text-gray-300">Events Executed</p></div>
+                    <div class="card p-6 rounded-lg story-point text-center"><p class="text-4xl lg:text-5xl font-extrabold text-indigo-400" data-target="150">0</p><p class="mt-2 text-base text-gray-300">People Mentored</p></div>
                 </div>
             </section>
-
+            
             <section id="experience" class="py-10 sm:py-16">
                 <h2 class="text-3xl font-bold mb-12 section-title inline-block">My Roles</h2>
                 <p class="text-lg text-gray-300 text-center mb-12 max-w-3xl mx-auto story-point">
-                    Hover over a role to see my progression!
-                </p>
+                               Hover over a role to see my progression!
+                            </p>
                 <div class="flex flex-wrap gap-4 mb-10">
                     <button class="tab-button active" data-tab="starter">Starter</button>
                     <button class="tab-button" data-tab="leader">Leader</button>
@@ -292,101 +241,97 @@
                 <div id="learner-content" class="tab-content md:grid-cols-2 xl:grid-cols-3 gap-6"></div>
                 <div id="connector-content" class="tab-content md:grid-cols-2 xl:grid-cols-3 gap-6"></div>
             </section>
-
+    
             <section id="skills" class="py-10 sm:py-16">
                 <h2 class="text-3xl font-bold mb-12 section-title inline-block">My Toolbox</h2>
                 <div class="max-w-4xl mx-auto">
-                    <p class="text-lg text-gray-300 mb-8 story-point">Click on a skill to see my related projects and
-                        experiences!</p>
+                    <p class="text-lg text-gray-300 mb-8 story-point">Click on a skill to see my related projects and experiences!</p>
                     <div class="mb-12">
                         <h3 class="text-2xl font-semibold text-white mb-6 text-center">Programming & Tools</h3>
                         <div class="flex flex-wrap gap-3 justify-center" id="programming-skills">
-                            <span class="tag programming-tag skill-tag rounded-full px-4 py-2 text-sm font-medium"
-                                data-skill="python">Python</span>
-                            <span class="tag programming-tag skill-tag rounded-full px-4 py-2 text-sm font-medium"
-                                data-skill="sql">SQL</span>
-                            <span class="tag programming-tag skill-tag rounded-full px-4 py-2 text-sm font-medium"
-                                data-skill="javascript">JavaScript</span>
-                            <span class="tag programming-tag skill-tag rounded-full px-4 py-2 text-sm font-medium"
-                                data-skill="html_css">HTML/CSS</span>
-                            <span class="tag programming-tag skill-tag rounded-full px-4 py-2 text-sm font-medium"
-                                data-skill="java">Java</span>
-                            <span class="tag programming-tag skill-tag rounded-full px-4 py-2 text-sm font-medium"
-                                data-skill="cplusplus">C++</span>
-                            <span class="tag programming-tag skill-tag rounded-full px-4 py-2 text-sm font-medium"
-                                data-skill="csharp">C#</span>
-                            <span class="tag programming-tag skill-tag rounded-full px-4 py-2 text-sm font-medium"
-                                data-skill="matlab">MATLAB</span>
-                            <span class="tag programming-tag skill-tag rounded-full px-4 py-2 text-sm font-medium"
-                                data-skill="ruby">Ruby</span>
-                            <span class="tag programming-tag skill-tag rounded-full px-4 py-2 text-sm font-medium"
-                                data-skill="ada">Ada</span>
-                            <span class="tag programming-tag skill-tag rounded-full px-4 py-2 text-sm font-medium"
-                                data-skill="clojure">Clojure</span>
+                            <span class="tag programming-tag skill-tag rounded-full px-4 py-2 text-sm font-medium" data-skill="python">Python</span>
+                            <span class="tag programming-tag skill-tag rounded-full px-4 py-2 text-sm font-medium" data-skill="sql">SQL</span>
+                            <span class="tag programming-tag skill-tag rounded-full px-4 py-2 text-sm font-medium" data-skill="javascript">JavaScript</span>
+                            <span class="tag programming-tag skill-tag rounded-full px-4 py-2 text-sm font-medium" data-skill="html_css">HTML/CSS</span>
+                            <span class="tag programming-tag skill-tag rounded-full px-4 py-2 text-sm font-medium" data-skill="java">Java</span>
+                            <span class="tag programming-tag skill-tag rounded-full px-4 py-2 text-sm font-medium" data-skill="cplusplus">C++</span>
+                            <span class="tag programming-tag skill-tag rounded-full px-4 py-2 text-sm font-medium" data-skill="csharp">C#</span>
+                            <span class="tag programming-tag skill-tag rounded-full px-4 py-2 text-sm font-medium" data-skill="matlab">MATLAB</span>
+                            <span class="tag programming-tag skill-tag rounded-full px-4 py-2 text-sm font-medium" data-skill="ruby">Ruby</span>
+                            <span class="tag programming-tag skill-tag rounded-full px-4 py-2 text-sm font-medium" data-skill="ada">Ada</span>
+                            <span class="tag programming-tag skill-tag rounded-full px-4 py-2 text-sm font-medium" data-skill="clojure">Clojure</span>
                         </div>
                     </div>
                     <div>
                         <h3 class="text-2xl font-semibold text-white mb-6 text-center">Artistic & Design</h3>
                         <div class="flex flex-wrap gap-3 justify-center" id="artistic-skills">
-                            <span class="tag artistic-tag skill-tag rounded-full px-4 py-2 text-sm font-medium"
-                                data-skill="photography">Photography</span>
-                            <span class="tag artistic-tag skill-tag rounded-full px-4 py-2 text-sm font-medium"
-                                data-skill="digital_design">Digital Design</span>
-                            <span class="tag artistic-tag skill-tag rounded-full px-4 py-2 text-sm font-medium"
-                                data-skill="lightroom">Adobe Lightroom</span>
-                            <span class="tag artistic-tag skill-tag rounded-full px-4 py-2 text-sm font-medium"
-                                data-skill="photoshop">Adobe Photoshop</span>
-                            <span class="tag artistic-tag skill-tag rounded-full px-4 py-2 text-sm font-medium"
-                                data-skill="canva">Canva</span>
+                            <span class="tag artistic-tag skill-tag rounded-full px-4 py-2 text-sm font-medium" data-skill="photography">Photography</span>
+                            <span class="tag artistic-tag skill-tag rounded-full px-4 py-2 text-sm font-medium" data-skill="digital_design">Digital Design</span>
+                            <span class="tag artistic-tag skill-tag rounded-full px-4 py-2 text-sm font-medium" data-skill="lightroom">Adobe Lightroom</span>
+                            <span class="tag artistic-tag skill-tag rounded-full px-4 py-2 text-sm font-medium" data-skill="photoshop">Adobe Photoshop</span>
+                            <span class="tag artistic-tag skill-tag rounded-full px-4 py-2 text-sm font-medium" data-skill="canva">Canva</span>
                         </div>
                     </div>
                 </div>
             </section>
-
+    
             <section id="contact" class="py-10 sm:py-16 text-center">
-                <h2 class="text-3xl font-bold mb-6 section-title inline-block">Let's Connect!</h2>
+                <h2 class="text-3xl font-bold mb-6 section-title inline-block">Let's Talk!</h2>
                 <p class="text-lg text-gray-300 mb-8 max-w-xl mx-auto">
                     I would love to get coffee virtually or in person!
                 </p>
-                <a href="mailto:pauline.lu@example.com"
-                    class="inline-block bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 px-8 rounded-full transition duration-300 ease-in-out transform hover:scale-105 shadow-lg">
+                <a href="mailto:pauline.lu@example.com" class="inline-block bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 px-8 rounded-full transition duration-300 ease-in-out transform hover:scale-105 shadow-lg">
                     Say Hello
                 </a>
             </section>
         </div>
     </main>
-
-    <div id="projectModal"
-        class="modal fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center p-4 z-50 opacity-0 pointer-events-none">
+    
+    <div id="projectModal" class="modal fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center p-4 z-50 opacity-0 pointer-events-none">
         <div class="project-modal-content transform scale-95 max-h-[90vh] overflow-y-auto">
             <div class="flex justify-between items-center mb-6">
                 <h3 id="projectModalTitle" class="text-3xl font-bold text-white">Projects</h3>
-                <button id="projectModalCloseButton"
-                    class="text-gray-400 hover:text-white text-4xl font-bold">&times;</button>
+                <button id="projectModalCloseButton" class="text-gray-400 hover:text-white text-4xl font-bold">&times;</button>
             </div>
             <div id="projectModalBody" class="grid grid-cols-1 md:grid-cols-2 gap-6"></div>
+        </div>
+    </div>
+
+    <!-- LinkedIn Connect Modal -->
+    <div id="linkedinConnectModal" class="modal fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center p-4 z-50 opacity-0 pointer-events-none">
+        <div class="modal-content bg-gray-800 p-8 rounded-lg shadow-lg text-center transform scale-95 transition-all duration-300 ease-in-out max-w-sm w-full">
+            <!-- LinkedIn Icon moved here -->
+            <a href="https://www.linkedin.com/in/pauline-lu-934909209/" target="_blank" rel="noopener noreferrer" class="inline-block mb-4 text-indigo-400 hover:text-indigo-300 transition-colors duration-300">
+                <i class="fab fa-linkedin fa-4x"></i>
+            </a>
+            <h3 class="text-2xl font-bold text-white mb-4">Let's Connect!</h3>
+            <p class="text-gray-300 mb-6">I'd love to connect with you on LinkedIn to share insights and opportunities.</p>
+            <a href="https://www.linkedin.com/in/pauline-lu-934909209/" target="_blank" rel="noopener noreferrer" class="inline-block bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 px-8 rounded-full transition duration-300 ease-in-out transform hover:scale-105">
+                Connect on LinkedIn
+            </a>
+            <button id="linkedinModalCloseButton" class="mt-4 text-gray-400 hover:text-white block mx-auto">No thanks</button>
         </div>
     </div>
 
     <script>
         // --- DATA STORE ---
         const projectData = {
-            python: { name: 'Python', projects: [{ title: 'IT Systems Automation', description: 'Streamlined data management for 100+ schools by automating critical daily processes using Python, SQL, and Docker at National Heritage Academies.' }, { title: 'Cybersecurity & Cryptography', description: 'Completed a comprehensive course series in Cybersecurity and Cryptography using Python as part of the Girls Who Code Self-Paced Program.' }, { title: 'Data Science For Good', description: 'Utilized Python in data science projects focused on social impact, covering data analysis, visualization, and modeling with Girls Who Code.' }] },
-            sql: { name: 'SQL', projects: [{ title: 'Enterprise Database Management', description: 'Utilized SQL to perform database management and streamline data processes with Oracle and OnBase systems during an IT & ERP Systems internship at National Heritage Academies.' }] },
-            javascript: { name: 'JavaScript', projects: [{ title: 'Interactive Web Development', description: 'Learned and implemented web development with HTML, CSS, and JavaScript in the Girls Who Code Summer Immersion Program.' }, { title: 'Web Project Portfolio', description: 'Designed and coded a personal website, a digital interactive quiz, and an advocacy website using modern web technologies.' }] },
-            html_css: { name: 'HTML/CSS', projects: [{ title: 'User-Friendly OnBase Forms', description: 'Converted and created 5+ user-friendly HTML forms for the OnBase enterprise information platform at National Heritage Academies.' }, { title: 'Web Development Foundations', description: 'Built multiple websites and web applications, focusing on structure (HTML) and styling (CSS) with Girls Who Code.' }] },
-            matlab: { name: 'MATLAB', projects: [{ title: 'The Science Behind Sunsets', description: 'Received the Outstanding Junior Project Award for a project that studied and simulated the effects of atmospheric particles on the colorization of sunsets. Coded a MATLAB simulator with a location-based sun-position graph.' }] },
+            python: { name: 'Python', projects: [ { title: 'IT Systems Automation', description: 'Streamlined data management for 100+ schools by automating critical daily processes using Python, SQL, and Docker at National Heritage Academies.' }, { title: 'Cybersecurity & Cryptography', description: 'Completed a comprehensive course series in Cybersecurity and Cryptography using Python as part of the Girls Who Code Self-Paced Program.' }, { title: 'Data Science For Good', description: 'Utilized Python in data science projects focused on social impact, covering data analysis, visualization, and modeling with Girls Who Code.' } ] },
+            sql: { name: 'SQL', projects: [ { title: 'Enterprise Database Management', description: 'Utilized SQL to perform database management and streamline data processes with Oracle and OnBase systems during an IT & ERP Systems internship at National Heritage Academies.' } ] },
+            javascript: { name: 'JavaScript', projects: [ { title: 'Interactive Web Development', description: 'Learned and implemented web development with HTML, CSS, and JavaScript in the Girls Who Code Summer Immersion Program.' }, { title: 'Web Project Portfolio', description: 'Designed and coded a personal website, a digital interactive quiz, and an advocacy website using modern web technologies.' } ] },
+            html_css: { name: 'HTML/CSS', projects: [ { title: 'User-Friendly OnBase Forms', description: 'Converted and created 5+ user-friendly HTML forms for the OnBase enterprise information platform at National Heritage Academies.' }, { title: 'Web Development Foundations', description: 'Built multiple websites and web applications, focusing on structure (HTML) and styling (CSS) with Girls Who Code.' } ] },
+            matlab: { name: 'MATLAB', projects: [ { title: 'The Science Behind Sunsets', description: 'Received the Outstanding Junior Project Award for a project that studied and simulated the effects of atmospheric particles on the colorization of sunsets. Coded a MATLAB simulator with a location-based sun-position graph.' } ] },
             java: { name: 'Java', projects: [{ title: 'Programming Languages Coursework', description: 'Completed 12 labs and 11 projects in Java, Ruby, Ada, and Clojure for the CS214: Programming Languages course, focusing on different programming paradigms.' }] },
             ruby: { name: 'Ruby', projects: [{ title: 'Programming Languages Coursework', description: 'Completed 12 labs and 11 projects in Java, Ruby, Ada, and Clojure for the CS214: Programming Languages course, focusing on different programming paradigms.' }] },
             ada: { name: 'Ada', projects: [{ title: 'Programming Languages Coursework', description: 'Completed 12 labs and 11 projects in Java, Ruby, Ada, and Clojure for the CS214: Programming Languages course, focusing on different programming paradigms.' }] },
             clojure: { name: 'Clojure', projects: [{ title: 'Programming Languages Coursework', description: 'Completed 12 labs and 11 projects in Java, Ruby, Ada, and Clojure for the CS214: Programming Languages course, focusing on different programming paradigms.' }] },
             cplusplus: { name: 'C++', projects: [{ title: 'University Coursework', description: 'Developed foundational and advanced programming skills through various C++ projects and assignments in university computer science courses.' }] },
             csharp: { name: 'C#', projects: [{ title: 'University Coursework', description: 'Developed foundational and advanced programming skills through various C# projects and assignments in university computer science courses.' }] },
-            photography: { name: 'Photography', projects: [{ title: 'Published Hobbyist Photographer', description: 'Published hobby photographer with over 600,000 views on Unsplash, specializing in landscape and travel photography.' }] },
-            digital_design: { name: 'Digital Design', projects: [{ title: 'Yearbook Editor in Chief', description: 'Led the design and creation of complex graphic elements, layouts, and cover art for the yearbook using tools like Adobe Photoshop.' }, { title: 'VP of Marketing & Communication', description: 'Designed digital graphics, posters, and social media content to promote senate events and initiatives using Canva and the Adobe Suite.' }] },
-            lightroom: { name: 'Adobe Lightroom', projects: [{ title: 'Yearbook Editor in Chief', description: 'Utilized Adobe Lightroom for professional-grade photo editing and color correction for all images in the annual yearbook.' }, { title: 'VP of Marketing & Communication', description: 'Edited and enhanced photos for social media campaigns and promotional materials for the Student Senate.' }] },
-            photoshop: { name: 'Adobe Photoshop', projects: [{ title: 'Yearbook Editor in Chief', description: 'Led the design and creation of complex graphic elements, layouts, and cover art for the yearbook using Adobe Photoshop.' }, { title: 'VP of Marketing & Communication', description: 'Designed digital graphics, posters, and social media content to promote senate events and initiatives.' }] },
-            canva: { name: 'Canva', projects: [{ title: 'VP of Marketing & Communication', description: 'Created accessible and engaging marketing materials, presentations, and social media graphics for the Student Senate using Canva.' }, { title: 'Yearbook Editor in Chief', description: 'Used Canva for quick-turnaround graphics, promotional materials for the yearbook, and collaborative design tasks.' }] }
+            photography: { name: 'Photography', projects: [ { title: 'Published Hobbyist Photographer', description: 'Published hobby photographer with over 600,000 views on Unsplash, specializing in landscape and travel photography.' } ] },
+            digital_design: { name: 'Digital Design', projects: [ { title: 'Yearbook Editor in Chief', description: 'Led the design and creation of complex graphic elements, layouts, and cover art for the yearbook using tools like Adobe Photoshop.' }, { title: 'VP of Marketing & Communication', description: 'Designed digital graphics, posters, and social media content to promote senate events and initiatives using Canva and the Adobe Suite.' } ] },
+            lightroom: { name: 'Adobe Lightroom', projects: [ { title: 'Yearbook Editor in Chief', description: 'Utilized Adobe Lightroom for professional-grade photo editing and color correction for all images in the annual yearbook.' }, { title: 'VP of Marketing & Communication', description: 'Edited and enhanced photos for social media campaigns and promotional materials for the Student Senate.' } ] },
+            photoshop: { name: 'Adobe Photoshop', projects: [ { title: 'Yearbook Editor in Chief', description: 'Led the design and creation of complex graphic elements, layouts, and cover art for the yearbook using Adobe Photoshop.' }, { title: 'VP of Marketing & Communication', description: 'Designed digital graphics, posters, and social media content to promote senate events and initiatives.' } ] },
+            canva: { name: 'Canva', projects: [ { title: 'VP of Marketing & Communication', description: 'Created accessible and engaging marketing materials, presentations, and social media graphics for the Student Senate using Canva.' }, { title: 'Yearbook Editor in Chief', description: 'Used Canva for quick-turnaround graphics, promotional materials for the yearbook, and collaborative design tasks.' } ] }
         };
 
         const experienceData = {
@@ -412,21 +357,16 @@
                         { title: 'Outreach Coordinator Intern', org: 'Nowhere Collective', date: '2025', desc: 'Developed and executed community engagement strategies, cultivating 50+ partnerships for mission-driven initiatives, learning about non-profit operations and outreach.' }
                     ]
                 },
-                {
-                    current: { title: 'Work Prep Participant', org: 'Girls Who Code & Bank of America', date: 'July 2024', desc: 'Participated in a three-week career readiness program focused on technical roles in consulting, gaining insights into transferable skills, project approaches, and growth mindset.' },
-                    history: [
-                        { title: 'Self-Paced & Summer Immersion Programs', org: 'Girls Who Code', date: 'Summer 2022 & 2023', desc: 'Learned and implemented web development with HTML, CSS, and JavaScript. Certified in courses on Cybersecurity, Cryptography, and Data Science utilizing Python.' }
-                    ]
-                }
+                { title: 'Work Prep Participant', org: 'Girls Who Code & Bank of America', date: 'July 2024', desc: 'Participated in a three-week career readiness program focused on technical roles in consulting, gaining insights into transferable skills, project approaches, and growth mindset.' },
             ],
             connector: [
-                {
+                 {
                     current: { title: 'University Guide', org: 'Calvin University Admissions', date: '2023 - Present', desc: 'Represent the institution by enthusiastically connecting with prospective students and their families, guiding them through campus and sharing personal experiences to foster a welcoming environment.' },
                     history: [
                         { title: 'Student Caller', org: 'Calvin University Admissions', date: '2023 - 2024', desc: 'Initiated contact with prospective students, shared key information about the university, and meticulously logged valuable data in the admissions database.' }
                     ]
-                },
-                { title: 'Activities Coordinator', org: 'Carnegie Assisted Living', date: 'Summer 2023, 2024', desc: 'Created engaging and stimulating activities for people with memory loss, patiently practicing adaptability and building relationships to foster a positive atmosphere.' },
+                 },
+                 { title: 'Activities Coordinator', org: 'Carnegie Assisted Living', date: 'Summer 2023, 2024', desc: 'Created engaging and stimulating activities for people with memory loss, patiently practicing adaptability and building relationships to foster a positive atmosphere.' },
             ]
         };
 
@@ -439,7 +379,7 @@
             const projectModal = document.getElementById('projectModal');
             const projectModalTitle = document.getElementById('projectModalTitle');
             const projectModalBody = document.getElementById('projectModalBody');
-
+            
             function openProjectModal(skillKey) {
                 const skillInfo = projectData[skillKey];
                 if (!skillInfo || !skillInfo.projects) return;
@@ -451,22 +391,36 @@
                     card.innerHTML = `<h4 class="text-xl font-bold text-white mb-2">${project.title}</h4><p class="text-gray-300 text-sm">${project.description}</p>`;
                     projectModalBody.appendChild(card);
                 });
-                projectModal.classList.remove('opacity-0', 'pointer-events-none');
-                document.body.style.overflow = 'hidden';
-                setTimeout(() => projectModal.querySelector('.project-modal-content').classList.remove('scale-95'), 10);
+                if (projectModal) { // Ensure projectModal exists before using it
+                    projectModal.classList.remove('opacity-0', 'pointer-events-none');
+                    document.body.style.overflow = 'hidden'; // Prevent scrolling when modal is open
+                    const modalContent = projectModal.querySelector('.modal-content');
+                    if (modalContent) {
+                        setTimeout(() => modalContent.classList.remove('scale-95'), 10);
+                    }
+                }
             }
 
             function closeProjectModal() {
-                projectModal.querySelector('.project-modal-content').classList.add('scale-95');
-                setTimeout(() => {
-                    projectModal.classList.add('opacity-0', 'pointer-events-none');
-                    document.body.style.overflow = 'auto';
-                }, 300);
+                if (projectModal) { // Ensure projectModal exists before using it
+                    const modalContent = projectModal.querySelector('.modal-content');
+                    if (modalContent) {
+                        modalContent.classList.add('scale-95');
+                    }
+                    setTimeout(() => {
+                        projectModal.classList.add('opacity-0', 'pointer-events-none');
+                        document.body.style.overflow = 'auto'; // Re-enable scrolling
+                    }, 300);
+                }
             }
-
+            
             document.querySelectorAll('.skill-tag').forEach(tag => tag.addEventListener('click', () => openProjectModal(tag.dataset.skill)));
-            document.getElementById('projectModalCloseButton').addEventListener('click', closeProjectModal);
-            projectModal.addEventListener('click', e => { if (e.target === projectModal) closeProjectModal(); });
+            if (document.getElementById('projectModalCloseButton')) {
+                document.getElementById('projectModalCloseButton').addEventListener('click', closeProjectModal);
+            }
+            if (projectModal) {
+                projectModal.addEventListener('click', e => { if (e.target === projectModal) closeProjectModal(); });
+            }
             window.addEventListener('keydown', e => { if (e.key === 'Escape') closeProjectModal(); });
 
             // Animation Observers
@@ -520,7 +474,10 @@
             function showTab(tabId) {
                 tabButtons.forEach(b => b.classList.remove('active'));
                 tabContents.forEach(c => { c.classList.remove('active'); c.style.display = 'none'; });
-                document.querySelector(`.tab-button[data-tab="${tabId}"]`).classList.add('active');
+                const targetButton = document.querySelector(`.tab-button[data-tab="${tabId}"]`);
+                if (targetButton) {
+                    targetButton.classList.add('active');
+                }
                 const activeContent = document.getElementById(`${tabId}-content`);
                 if (activeContent) {
                     activeContent.style.display = 'grid';
@@ -530,9 +487,61 @@
 
             tabButtons.forEach(button => button.addEventListener('click', () => showTab(button.dataset.tab)));
             if (tabButtons.length > 0) showTab(tabButtons[0].dataset.tab);
+
+            // LinkedIn Connect Modal
+            const linkedinConnectModal = document.getElementById('linkedinConnectModal');
+            const linkedinModalCloseButton = document.getElementById('linkedinModalCloseButton');
+            const linkedinProfileUrl = "https://www.linkedin.com/in/pauline-lu-934909209/";
+
+            function showLinkedInModal() {
+                // Only show if not already seen in this session
+                if (!localStorage.getItem('linkedinModalSeen')) {
+                    if (linkedinConnectModal) { // Ensure linkedinConnectModal exists
+                        setTimeout(() => {
+                            linkedinConnectModal.classList.remove('opacity-0', 'pointer-events-none');
+                            document.body.style.overflow = 'hidden'; // Prevent scrolling when modal is open
+                            const modalContent = linkedinConnectModal.querySelector('.modal-content');
+                            if (modalContent) {
+                                modalContent.classList.remove('scale-95');
+                            }
+                        }, 3000); // Show after 3 seconds
+                    }
+                }
+            }
+
+            function closeLinkedInModal() {
+                if (linkedinConnectModal) { // Ensure linkedinConnectModal exists
+                    const modalContent = linkedinConnectModal.querySelector('.modal-content');
+                    if (modalContent) {
+                        modalContent.classList.add('scale-95');
+                    }
+                    setTimeout(() => {
+                        linkedinConnectModal.classList.add('opacity-0', 'pointer-events-none');
+                        document.body.style.overflow = 'auto'; // Re-enable scrolling
+                        localStorage.setItem('linkedinModalSeen', 'true'); // Mark as seen
+                    }, 300);
+                }
+            }
+
+            // Event Listeners for LinkedIn Modal
+            if (linkedinConnectModal) {
+                showLinkedInModal(); // Call to show the modal
+                if (linkedinModalCloseButton) { // Ensure close button exists
+                    linkedinModalCloseButton.addEventListener('click', closeLinkedInModal);
+                }
+                linkedinConnectModal.addEventListener('click', (e) => {
+                    if (e.target === linkedinConnectModal) {
+                        closeLinkedInModal();
+                    }
+                });
+                window.addEventListener('keydown', (e) => {
+                    if (e.key === 'Escape' && !linkedinConnectModal.classList.contains('opacity-0')) {
+                        closeLinkedInModal();
+                    }
+                });
+            }
         });
     </script>
 
 </body>
-
 </html>
