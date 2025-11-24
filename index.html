@@ -7,36 +7,47 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Fira+Code:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Fira+Code:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" xintegrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta8gpp9+5xkbyxFXQ+ERgSsW0g/acJ2VqgVf3v/WkF/9g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <style>
-        /* Custom Tailwind Configuration for New Palette */
+        /* COLOR PALETTE VARIABLES */
         :root {
-            --color-light-cream: #F7F4EF; /* Background */
-            --color-muted-plum: #715B6C; /* Headings/Main Text */
-            --color-dark-text: #4A4A4A; /* High Contrast Text */
-            --color-warm-terracotta: #D6896C; /* Primary CTA */
-            --color-deep-sage-green: #7B907D; /* Secondary Elements */
-            --color-soft-gold: #E8C683; /* Highlights/Accents */
+            --light-cream: #F7F4EF;
+            --muted-plum: #715B6C;
+            --dark-text: #4A4A4A;
+            --warm-terracotta: #D6896C;
+            --deep-sage-green: #7B907D;
+            --soft-gold: #E8C683;
+            --card-background: #EBE8E3; /* Slightly darker cream for card contrast */
+            --modal-background: rgba(74, 74, 74, 0.95); /* Darker, sophisticated overlay */
         }
-
+        
         body {
-            /* Lora is the new humane font */
-            font-family: 'Lora', serif;
-            background-color: var(--color-light-cream);
-            color: var(--color-dark-text); /* Dark text on light background */
+            font-family: 'Roboto', sans-serif;
+            background-color: var(--light-cream);
+            color: var(--dark-text);
+        }
+        /* Override default Tailwind text colors with the new scheme */
+        h1, h2, h3, h4, .text-white {
+            color: var(--muted-plum) !important;
+            font-family: 'Playfair Display', serif;
+        }
+        .text-gray-400, .text-gray-300, .text-gray-500 {
+            color: var(--dark-text) !important;
+        }
+        .text-indigo-400, .text-indigo-600 {
+            color: var(--warm-terracotta) !important;
         }
         .main-content {
-            background-color: var(--color-light-cream); /* Keeping main content same as body for a clean canvas look */
+            background-color: var(--light-cream);
         }
         .section-title {
-            border-bottom: 2px solid var(--color-warm-terracotta); /* Terracotta accent line */
+            border-bottom: 2px solid var(--soft-gold); /* Soft Gold accent */
             padding-bottom: 0.5rem;
         }
-        /* Card Background */
         .card {
-            background-color: #EDEAE5; /* Slightly darker than Light Cream for subtle depth */
-            border: 1px solid #E0DCD7; /* Subtle border */
+            background-color: var(--card-background);
+            border: 1px solid var(--deep-sage-green);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
         .card:hover {
@@ -44,36 +55,36 @@
             /* Soft Gold subtle shadow on hover */
             box-shadow: 0 10px 15px -3px rgba(232, 198, 131, 0.4), 0 4px 6px -2px rgba(232, 198, 131, 0.2);
         }
-        /* Tags for skills/metadata */
         .tag {
-            background-color: var(--color-deep-sage-green); /* Sage Green background */
-            color: var(--color-light-cream); /* Light Cream text */
+            background-color: var(--deep-sage-green);
+            color: var(--light-cream);
             transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
             display: inline-flex;
             align-items: center;
         }
         .tag:hover {
-            background-color: var(--color-warm-terracotta); /* Terracotta on hover */
-            color: white; 
+            background-color: var(--warm-terracotta);
+            color: var(--light-cream);
             transform: translateY(-2px);
         }
         .skill-tag {
             cursor: pointer;
         }
-        /* Code-specific tags */
         .programming-tag {
             font-family: 'Fira Code', monospace;
-            background-color: var(--color-muted-plum); /* Muted Plum for Programming */
-            border: 1px solid #8B7A87; /* Slightly lighter Plum border */
+            background-color: var(--muted-plum);
+            border: 1px solid var(--deep-sage-green);
+            color: var(--light-cream);
         }
-        /* Artistic-specific tags - using Sage Green */
         .artistic-tag {
-            background-color: var(--color-deep-sage-green);
-            border: 1px solid #A4B2A5;
+            background-color: var(--deep-sage-green);
+            border: 1px solid var(--muted-plum);
+            color: var(--light-cream);
         }
-        /* Modal styles - updated to new color scheme */
+        /* Modal styles */
         .modal {
             transition: opacity 0.3s ease;
+            background-color: var(--modal-background); /* Darker, sophisticated overlay */
         }
         .modal-content {
             transition: transform 0.3s ease;
@@ -89,32 +100,32 @@
         }
         /* Project Modal Styles */
         .project-modal-content {
-            background-color: #EDEAE5; /* Lighter background for modal content */
+            background-color: var(--light-cream);
             padding: 2rem;
             border-radius: 0.75rem;
             max-width: 800px;
             width: 90%;
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.2), 0 10px 10px -5px rgba(0, 0, 0, 0.1);
-            border: 1px solid #D1CFC9;
+            /* Muted Plum shadow */
+            box-shadow: 0 20px 25px -5px rgba(113, 91, 108, 0.3), 0 10px 10px -5px rgba(113, 91, 108, 0.1);
+            border: 1px solid var(--muted-plum);
         }
         .project-card {
-            background-color: var(--color-light-cream); /* Very light project card */
-            border-left: 4px solid var(--color-soft-gold); /* Soft Gold accent */
-            color: var(--color-dark-text);
+            background-color: var(--card-background);
+            border-left: 4px solid var(--warm-terracotta);
         }
-        /* Tabbed interface styles - using Sage Green/Terracotta */
+        /* Tabbed interface styles */
         .tab-button {
             padding: 0.5rem 1rem;
             border-radius: 0.5rem;
             font-weight: bold;
-            background-color: #E0DCD7; /* Light button background */
-            color: var(--color-dark-text);
+            background-color: var(--deep-sage-green);
+            color: var(--light-cream);
             transition: background-color 0.3s ease, color 0.3s ease;
             cursor: pointer;
         }
         .tab-button.active {
-            background-color: var(--color-deep-sage-green); /* Active tab: Sage Green */
-            color: white; 
+            background-color: var(--warm-terracotta);
+            color: var(--light-cream);
         }
         .tab-content {
             display: none;
@@ -127,11 +138,10 @@
             opacity: 1;
             transform: translateY(0);
         }
-        /* Experience Card Timeline Styles - using Muted Plum/Terracotta */
+        /* Experience Card Timeline Styles */
         .experience-card {
             position: relative;
             overflow: hidden;
-            height: 100%; /* Ensure full height for hover effect */
         }
         .experience-card .timeline-overlay {
             position: absolute;
@@ -139,8 +149,8 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background-color: rgba(113, 91, 108, 0.97); /* Muted Plum overlay */
-            color: var(--color-light-cream);
+            background-color: rgba(247, 244, 239, 0.97); /* Light Cream with opacity */
+            color: var(--dark-text);
             padding: 1.5rem;
             opacity: 0;
             transform: translateY(100%);
@@ -158,8 +168,7 @@
         .timeline-item {
             position: relative;
             padding-left: 1.5rem;
-            border-left: 2px solid var(--color-warm-terracotta); /* Terracotta timeline line */
-            width: 100%; /* Full width within overlay */
+            border-left: 2px solid var(--deep-sage-green);
         }
         .timeline-item:not(:last-child) {
             margin-bottom: 1rem;
@@ -172,53 +181,40 @@
             width: 14px;
             height: 14px;
             border-radius: 50%;
-            background-color: var(--color-muted-plum); /* Muted Plum dot */
-            border: 2px solid var(--color-light-cream);
+            background-color: var(--warm-terracotta);
+            border: 2px solid var(--card-background);
         }
-        /* Hide placeholder image URL */
-        img[src$="profilepic.png"] {
-            display: none;
+        
+        /* LinkedIn Modal content update */
+        #linkedinConnectModal .modal-content {
+            background-color: var(--card-background);
+            color: var(--dark-text);
         }
-        /* Add a visible placeholder for the profile image */
-        .profile-placeholder {
-            width: 8rem;
-            height: 8rem;
-            border-radius: 50%;
-            background-color: var(--color-soft-gold);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 3rem;
-            color: var(--color-muted-plum);
-            font-weight: bold;
-            margin-left: auto;
-            margin-right: auto;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+        /* Style for the 'Say Hello' button - Warm Terracotta */
+        .cta-button {
+            background-color: var(--warm-terracotta);
+            color: var(--light-cream);
         }
-        @media (min-width: 1024px) {
-            .profile-placeholder {
-                margin-left: 0;
-                margin-right: 0;
-            }
+        .cta-button:hover {
+            background-color: var(--muted-plum);
         }
-
     </style>
 </head>
 <body class="lg:grid lg:grid-cols-12 lg:gap-8">
 
-    <header class="lg:col-span-4 lg:sticky lg:top-0 lg:h-screen flex flex-col justify-between p-8 sm:p-12">
+    <header class="lg:col-span-4 lg:sticky lg:top-0 lg:h-screen flex flex-col justify-between p-8 sm:p-12" style="background-color: var(--card-background);">
         <div>
             <div class="text-center lg:text-left">
-                <!-- Placeholder for profile image -->
-                <img src="images/profilepic.png" alt="Pauline Lu Profile" class="w-32 h-32 rounded-full mx-auto lg:mx-0 shadow-lg mb-6">
-                <h1 class="text-4xl font-extrabold" style="color: var(--color-muted-plum);">Pauline Lu</h1>
-                <p class="mt-2 text-lg" style="color: var(--color-deep-sage-green);">innovative & passionate leader, creative, & storyteller</p>
-                <p class="mt-4" style="color: var(--color-dark-text);">
+                <!-- Using a standard placeholder image since local files like 'images/profilepic.png' are not supported -->
+                <img src="https://placehold.co/128x128/715B6C/EBE8E3?text=PL" alt="Pauline Lu Profile" class="w-32 h-32 rounded-full mx-auto lg:mx-0 shadow-lg mb-6 border-4 border-solid" style="border-color: var(--soft-gold);">
+                <h1 class="text-4xl font-extrabold" style="color: var(--muted-plum);">Pauline Lu</h1>
+                <p class="mt-2 text-lg" style="color: var(--deep-sage-green);">innovative & passionate leader, creative, & storyteller</p>
+                <p class="mt-4" style="color: var(--dark-text);">
                     I am passionate about using technology to connect people and communities!
                 </p>
             </div>
             
-            <div class="mt-8 text-sm space-y-2 text-center lg:text-left" style="color: var(--color-dark-text);">
+            <div class="mt-8 text-sm space-y-2 text-center lg:text-left" style="color: var(--dark-text);">
                 <p><strong>University:</strong> Calvin University</p>
                 <p><strong>Major:</strong> Computer Science, Entrepreneurship, Philosophy</p>
                 <p><strong>Expected Graduation:</strong> May 2027</p>
@@ -227,19 +223,20 @@
             
             <nav class="hidden lg:block mt-8">
                 <ul class="space-y-2">
-                    <li><a href="#about" class="block py-2 group" style="color: var(--color-dark-text);"><span class="inline-block mr-4 h-px w-8 bg-gray-600 transition-all group-hover:w-16" style="background-color: var(--color-deep-sage-green);"></span><span class="transition-colors group-hover:text-[var(--color-warm-terracotta)]">About</span></a></li>
-                    <li><a href="#stats" class="block py-2 group" style="color: var(--color-dark-text);"><span class="inline-block mr-4 h-px w-8 bg-gray-600 transition-all group-hover:w-16" style="background-color: var(--color-deep-sage-green);"></span><span class="transition-colors group-hover:text-[var(--color-warm-terracotta)]">Journey</span></a></li>
-                    <li><a href="#experience" class="block py-2 group" style="color: var(--color-dark-text);"><span class="inline-block mr-4 h-px w-8 bg-gray-600 transition-all group-hover:w-16" style="background-color: var(--color-deep-sage-green);"></span><span class="transition-colors group-hover:text-[var(--color-warm-terracotta)]">My Roles</span></a></li>
-                    <li><a href="#skills" class="block py-2 group" style="color: var(--color-dark-text);"><span class="inline-block mr-4 h-px w-8 bg-gray-600 transition-all group-hover:w-16" style="background-color: var(--color-deep-sage-green);"></span><span class="transition-colors group-hover:text-[var(--color-warm-terracotta)]">My Toolbox</span></a></li>
-                    <li><a href="#contact" class="block py-2 group" style="color: var(--color-dark-text);"><span class="inline-block mr-4 h-px w-8 bg-gray-600 transition-all group-hover:w-16" style="background-color: var(--color-deep-sage-green);"></span><span class="transition-colors group-hover:text-[var(--color-warm-terracotta)]">Connect</span></a></li>
+                    <li><a href="#about" class="block py-2 hover:text-white transition group" style="color: var(--dark-text);"><span class="inline-block mr-4 h-px w-8 bg-gray-600 transition-all group-hover:w-16" style="background-color: var(--deep-sage-green); transition-all: 0.3s; group-hover:background-color: var(--warm-terracotta);"></span>About</a></li>
+                    <li><a href="#stats" class="block py-2 hover:text-white transition group" style="color: var(--dark-text);"><span class="inline-block mr-4 h-px w-8 bg-gray-600 transition-all group-hover:w-16" style="background-color: var(--deep-sage-green); transition-all: 0.3s; group-hover:background-color: var(--warm-terracotta);"></span>Journey</a></li>
+                    <li><a href="#experience" class="block py-2 hover:text-white transition group" style="color: var(--dark-text);"><span class="inline-block mr-4 h-px w-8 bg-gray-600 transition-all group-hover:w-16" style="background-color: var(--deep-sage-green); transition-all: 0.3s; group-hover:background-color: var(--warm-terracotta);"></span>My Roles</a></li>
+                    <li><a href="#skills" class="block py-2 hover:text-white transition group" style="color: var(--dark-text);"><span class="inline-block mr-4 h-px w-8 bg-gray-600 transition-all group-hover:w-16" style="background-color: var(--deep-sage-green); transition-all: 0.3s; group-hover:background-color: var(--warm-terracotta);"></span>My Toolbox</a></li>
+                    <li><a href="#contact" class="block py-2 hover:text-white transition group" style="color: var(--dark-text);"><span class="inline-block mr-4 h-px w-8 bg-gray-600 transition-all group-hover:w-16" style="background-color: var(--deep-sage-green); transition-all: 0.3s; group-hover:background-color: var(--warm-terracotta);"></span>Connect</a></li>
                 </ul>
             </nav>
         </div>
 
-        <footer class="mt-8 text-center lg:text-left text-sm" style="color: var(--color-muted-plum);">
+        <footer class="mt-8 text-center lg:text-left text-sm" style="color: var(--dark-text);">
             <p>&copy; <span id="year"></span> Pauline Lu. All Rights Reserved.</p>
             <div class="mt-4 flex justify-center lg:justify-start space-x-4">
-                <a href="#" id="linkedinIconLink" rel="noopener noreferrer" style="color: var(--color-deep-sage-green);" class="hover:text-[var(--color-muted-plum)] transition-colors duration-300">
+                <!-- Triggering modal instead of direct link for better interaction -->
+                <a href="#" id="openLinkedInModal" class="transition-colors duration-300" style="color: var(--deep-sage-green); hover:color: var(--warm-terracotta);">
                     <i class="fab fa-linkedin fa-2x"></i>
                 </a>
             </div>
@@ -249,30 +246,30 @@
     <main class="lg:col-span-8 main-content">
         <div class="p-6 sm:p-10">
             <section id="about" class="py-10 sm:py-16">
-                <h2 class="text-3xl font-bold mb-8 section-title inline-block" style="color: var(--color-muted-plum);">About Me</h2>
-                <div class="text-lg space-y-4" style="color: var(--color-dark-text);">
+                <h2 class="text-3xl font-bold mb-8 section-title inline-block" style="color: var(--muted-plum);">About Me</h2>
+                <div class="text-lg space-y-4" style="color: var(--dark-text);">
                     <p>
-                        As an Honors Scholar at Calvin University, I am pursuing a unique blend of Computer Science, Entrepreneurship, and Philosophy. I am committed to leveraging technology to create innovative, human-centric solutions.
+                        As an Honors Scholar at Calvin University, I am studying Computer Science, Entrepreneurship, and Philosophy. I am passionate about leveraging technology to create innovative, human-centric solutions, as well as studying human formation in the digital age. 
                     </p>
                     <p>
                         My experience ranges from streamlining data management for 100+ schools to founding a Girls Who Code chapter, reflecting my passion for leading projects that drive mission-driven initiatives and foster community.
                     </p>
                 </div>
             </section>
-    
+        
             <section id="stats" class="py-10 sm:py-16">
-                <h2 class="text-3xl font-bold mb-12 section-title inline-block" style="color: var(--color-muted-plum);">My Story in Numbers</h2>
+                <h2 class="text-3xl font-bold mb-12 section-title inline-block" style="color: var(--muted-plum);">My Story in Numbers</h2>
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                    <div class="card p-6 rounded-lg story-point text-center"><p class="text-4xl lg:text-5xl font-extrabold" style="color: var(--color-warm-terracotta);" data-target="4200">0</p><p class="mt-2 text-base" style="color: var(--color-dark-text);">Students Advocated For</p></div>
-                    <div class="card p-6 rounded-lg story-point text-center"><p class="text-4xl lg:text-5xl font-extrabold" style="color: var(--color-warm-terracotta);" data-target="50">0</p><p class="mt-2 text-base" style="color: var(--color-dark-text);">Partnerships Cultivated</p></div>
-                    <div class="card p-6 rounded-lg story-point text-center"><p class="text-4xl lg:text-5xl font-extrabold" style="color: var(--color-warm-terracotta);" data-target="25">0</p><p class="mt-2 text-base" style="color: var(--color-dark-text);">Events Executed</p></div>
-                    <div class="card p-6 rounded-lg story-point text-center"><p class="text-4xl lg:text-5xl font-extrabold" style="color: var(--color-warm-terracotta);" data-target="150">0</p><p class="mt-2 text-base" style="color: var(--color-dark-text);">People Mentored</p></div>
+                    <div class="card p-6 rounded-lg story-point text-center"><p class="text-4xl lg:text-5xl font-extrabold counter" data-target="4200" style="color: var(--warm-terracotta);">0</p><p class="mt-2 text-base" style="color: var(--dark-text);">Students Advocated For</p></div>
+                    <div class="card p-6 rounded-lg story-point text-center"><p class="text-4xl lg:text-5xl font-extrabold counter" data-target="50" style="color: var(--warm-terracotta);">0</p><p class="mt-2 text-base" style="color: var(--dark-text);">Partnerships Cultivated</p></div>
+                    <div class="card p-6 rounded-lg story-point text-center"><p class="text-4xl lg:text-5xl font-extrabold counter" data-target="25" style="color: var(--warm-terracotta);">0</p><p class="mt-2 text-base" style="color: var(--dark-text);">Events Executed</p></div>
+                    <div class="card p-6 rounded-lg story-point text-center"><p class="text-4xl lg:text-5xl font-extrabold counter" data-target="150" style="color: var(--warm-terracotta);">0</p><p class="mt-2 text-base" style="color: var(--dark-text);">People Mentored</p></div>
                 </div>
             </section>
             
             <section id="experience" class="py-10 sm:py-16">
-                <h2 class="text-3xl font-bold mb-12 section-title inline-block" style="color: var(--color-muted-plum);">My Roles</h2>
-                <p class="text-lg text-center mb-12 max-w-3xl mx-auto story-point" style="color: var(--color-muted-plum);">
+                <h2 class="text-3xl font-bold mb-12 section-title inline-block" style="color: var(--muted-plum);">My Roles</h2>
+                <p class="text-lg text-center mb-12 max-w-3xl mx-auto story-point" style="color: var(--dark-text);">
                     Hover over a role to see my progression!
                 </p>
                 <div class="flex flex-wrap gap-4 mb-10">
@@ -281,19 +278,19 @@
                     <button class="tab-button" data-tab="learner">Learner</button>
                     <button class="tab-button" data-tab="connector">Connector</button>
                 </div>
-                <!-- Content containers need to be visible to be observed by JS/CSS but start hidden -->
-                <div id="starter-content" class="tab-content active grid md:grid-cols-2 xl:grid-cols-3 gap-6"></div>
-                <div id="leader-content" class="tab-content grid md:grid-cols-2 xl:grid-cols-3 gap-6"></div>
-                <div id="learner-content" class="tab-content grid md:grid-cols-2 xl:grid-cols-3 gap-6"></div>
-                <div id="connector-content" class="tab-content grid md:grid-cols-2 xl:grid-cols-3 gap-6"></div>
+                <!-- Content Containers (filled by JS) -->
+                <div id="starter-content" class="tab-content active md:grid-cols-2 xl:grid-cols-3 gap-6"></div>
+                <div id="leader-content" class="tab-content md:grid-cols-2 xl:grid-cols-3 gap-6"></div>
+                <div id="learner-content" class="tab-content md:grid-cols-2 xl:grid-cols-3 gap-6"></div>
+                <div id="connector-content" class="tab-content md:grid-cols-2 xl:grid-cols-3 gap-6"></div>
             </section>
-    
+        
             <section id="skills" class="py-10 sm:py-16">
-                <h2 class="text-3xl font-bold mb-12 section-title inline-block" style="color: var(--color-muted-plum);">My Toolbox</h2>
+                <h2 class="text-3xl font-bold mb-12 section-title inline-block" style="color: var(--muted-plum);">My Toolbox</h2>
                 <div class="max-w-4xl mx-auto">
-                    <p class="text-lg mb-8 story-point" style="color: var(--color-dark-text);">Click on a skill to see my related projects and experiences!</p>
+                    <p class="text-lg mb-8 story-point" style="color: var(--dark-text);">Click on a skill to see my related projects and experiences!</p>
                     <div class="mb-12">
-                        <h3 class="text-2xl font-semibold mb-6 text-center" style="color: var(--color-muted-plum);">Programming & Tools</h3>
+                        <h3 class="text-2xl font-semibold mb-6 text-center" style="color: var(--muted-plum);">Programming & Tools</h3>
                         <div class="flex flex-wrap gap-3 justify-center" id="programming-skills">
                             <span class="tag programming-tag skill-tag rounded-full px-4 py-2 text-sm font-medium" data-skill="python">Python</span>
                             <span class="tag programming-tag skill-tag rounded-full px-4 py-2 text-sm font-medium" data-skill="sql">SQL</span>
@@ -309,7 +306,7 @@
                         </div>
                     </div>
                     <div>
-                        <h3 class="text-2xl font-semibold mb-6 text-center" style="color: var(--color-muted-plum);">Artistic & Design</h3>
+                        <h3 class="text-2xl font-semibold mb-6 text-center" style="color: var(--muted-plum);">Artistic & Design</h3>
                         <div class="flex flex-wrap gap-3 justify-center" id="artistic-skills">
                             <span class="tag artistic-tag skill-tag rounded-full px-4 py-2 text-sm font-medium" data-skill="photography">Photography</span>
                             <span class="tag artistic-tag skill-tag rounded-full px-4 py-2 text-sm font-medium" data-skill="digital_design">Digital Design</span>
@@ -320,46 +317,42 @@
                     </div>
                 </div>
             </section>
-    
+        
             <section id="contact" class="py-10 sm:py-16 text-center">
-                <h2 class="text-3xl font-bold mb-6 section-title inline-block" style="color: var(--color-muted-plum);">Let's Talk!</h2>
-                <p class="text-lg mb-8 max-w-xl mx-auto" style="color: var(--color-dark-text);">
+                <h2 class="text-3xl font-bold mb-6 section-title inline-block" style="color: var(--muted-plum);">Let's Talk!</h2>
+                <p class="text-lg mb-8 max-w-xl mx-auto" style="color: var(--dark-text);">
                     I would love to get coffee virtually or in person!
                 </p>
-                <a href="mailto:pauline.lu@example.com" class="inline-block font-bold py-3 px-8 rounded-full transition duration-300 ease-in-out transform hover:scale-105 shadow-lg" 
-                    style="background-color: var(--color-warm-terracotta); color: white;">
+                <a href="mailto:pauline.lu@example.com" class="inline-block cta-button font-bold py-3 px-8 rounded-full transition duration-300 ease-in-out transform hover:scale-105 shadow-lg">
                     Say Hello
                 </a>
             </section>
         </div>
     </main>
     
-    <!-- Project Modal -->
-    <div id="projectModal" class="modal fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center p-4 z-50 opacity-0 pointer-events-none">
+    <!-- Project Modal (hidden by default) -->
+    <div id="projectModal" class="modal fixed inset-0 flex items-center justify-center p-4 z-50 opacity-0 pointer-events-none">
         <div class="project-modal-content transform scale-95 max-h-[90vh] overflow-y-auto">
             <div class="flex justify-between items-center mb-6">
-                <h3 id="projectModalTitle" class="text-3xl font-bold" style="color: var(--color-muted-plum);">Projects</h3>
-                <button id="projectModalCloseButton" class="text-4xl font-bold" style="color: var(--color-deep-sage-green);" class="hover:text-[var(--color-warm-terracotta)] transition-colors duration-300">&times;</button>
+                <h3 id="projectModalTitle" class="text-3xl font-bold" style="color: var(--muted-plum);">Projects</h3>
+                <button id="projectModalCloseButton" class="text-4xl font-bold" style="color: var(--deep-sage-green); hover:color: var(--muted-plum);">&times;</button>
             </div>
-            <div id="projectModalBody" class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <!-- Project cards will be injected here -->
-            </div>
+            <div id="projectModalBody" class="grid grid-cols-1 md:grid-cols-2 gap-6"></div>
         </div>
     </div>
 
-    <!-- LinkedIn Modal -->
-    <div id="linkedinConnectModal" class="modal fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center p-4 z-50 opacity-0 pointer-events-none">
-        <div class="modal-content p-8 rounded-lg shadow-lg text-center transform scale-95 transition-all duration-300 ease-in-out max-w-sm w-full" style="background-color: #E0DCD7;">
-            <a href="https://www.linkedin.com/in/pauline-lu-934909209/" target="_blank" rel="noopener noreferrer" class="inline-block mb-4 transition-colors duration-300" style="color: var(--color-warm-terracotta);" onmouseover="this.style.color='var(--color-muted-plum)'" onmouseout="this.style.color='var(--color-warm-terracotta)'">
+    <!-- LinkedIn Modal (hidden by default) -->
+    <div id="linkedinConnectModal" class="modal fixed inset-0 flex items-center justify-center p-4 z-50 opacity-0 pointer-events-none">
+        <div class="modal-content p-8 rounded-lg shadow-lg text-center transform scale-95 transition-all duration-300 ease-in-out max-w-sm w-full">
+            <a href="https://www.linkedin.com/in/pauline-lu-934909209/" target="_blank" rel="noopener noreferrer" class="inline-block mb-4 transition-colors duration-300" style="color: var(--warm-terracotta); hover:color: var(--deep-sage-green);">
                 <i class="fab fa-linkedin fa-4x"></i>
             </a>
-            <h3 class="text-2xl font-bold mb-4" style="color: var(--color-muted-plum);">Let's Connect!</h3>
-            <p class="mb-6" style="color: var(--color-dark-text);">I'd love to connect with you on LinkedIn to share insights and opportunities.</p>
-            <a href="https://www.linkedin.com/in/pauline-lu-934909209/" target="_blank" rel="noopener noreferrer" class="inline-block font-bold py-3 px-8 rounded-full transition duration-300 ease-in-out transform hover:scale-105" 
-                style="background-color: var(--color-warm-terracotta); color: white;">
+            <h3 class="text-2xl font-bold mb-4" style="color: var(--muted-plum);">Let's Connect!</h3>
+            <p class="mb-6" style="color: var(--dark-text);">I'd love to connect with you on LinkedIn to share insights and opportunities.</p>
+            <a href="https://www.linkedin.com/in/pauline-lu-934909209/" target="_blank" rel="noopener noreferrer" class="inline-block cta-button font-bold py-3 px-8 rounded-full transition duration-300 ease-in-out transform hover:scale-105">
                 Connect on LinkedIn
             </a>
-            <button id="linkedinModalCloseButton" class="mt-4 block mx-auto" style="color: var(--color-dark-text);" onmouseover="this.style.color='var(--color-muted-plum)'" onmouseout="this.style.color='var(--color-dark-text)'">No thanks</button>
+            <button id="linkedinModalCloseButton" class="mt-4 block mx-auto" style="color: var(--deep-sage-green); hover:color: var(--warm-terracotta);">No thanks</button>
         </div>
     </div>
 
@@ -413,107 +406,128 @@
                 {
                     current: { title: 'University Guide', org: 'Calvin University Admissions', date: '2023 - Present', desc: 'Represent the institution by enthusiastically connecting with prospective students and their families, guiding them through campus and sharing personal experiences to foster a welcoming environment.' },
                     history: [
-                        { title: 'Student Caller', org: 'Calvin University Admissions', date: '2023 - 2024', desc: 'Engaged with prospective and current students via phone, providing information, answering questions, and promoting university events and initiatives.' }
+                        { title: 'Student Caller', org: 'Calvin University Admissions', date: '2023 - 2024', desc: 'Initiated contact with prospective students, shared key information about the university, and meticulously logged valuable data in the admissions database.' }
                     ]
                 },
-                { title: 'Yearbook Editor in Chief', org: 'Southlands Christian School', date: '2022 - 2023', desc: 'Led a team of 15 designers and writers to conceptualize, design, and produce a high-quality yearbook. Managed project deadlines, photo selection, and final design approvals.' },
-                { title: 'Junior High Camp Counselor', org: 'Young Life', date: 'Summer 2022', desc: 'Built meaningful relationships with junior high students, fostering a positive, inclusive environment, and facilitating leadership and teamwork activities.' }
+                { title: 'Activities Coordinator', org: 'Carnegie Assisted Living', date: 'Summer 2023, 2024', desc: 'Created engaging and stimulating activities for people with memory loss, patiently practicing adaptability and building relationships to foster a positive atmosphere.' },
             ]
         };
 
-        // --- INTERACTIVITY FUNCTIONS ---
+        // --- GENERAL SETUP & EVENT LISTENERS ---
+        // Function to create an experience card HTML
+        function createExperienceCard(job) {
+            let historyHtml = '';
+            let currentTitle, currentOrg, currentDate, currentDesc;
 
-        /**
-         * Renders the experience cards for the given tab ID.
-         * Note: The grid classes are already on the content container in the HTML.
-         * @param {string} tabId - The ID corresponding to the experienceData key.
-         */
-        const renderExperiences = (tabId) => {
-            const container = document.getElementById(`${tabId}-content`);
-            if (!container) return;
+            if (job.current) {
+                // If it's a current role with history
+                currentTitle = job.current.title;
+                currentOrg = job.current.org;
+                currentDate = job.current.date;
+                currentDesc = job.current.desc;
 
-            container.innerHTML = ''; // Clear existing content
-
-            const data = experienceData[tabId];
-            if (!data) return;
-
-            data.forEach(item => {
-                let cardHtml = '';
-                // Check if the item is a history/timeline object (has a 'current' property)
-                if (item.current) {
-                    // Handle timeline items
-                    cardHtml = `
-                        <div class="card experience-card p-6 rounded-xl shadow-md cursor-pointer h-full relative overflow-hidden">
-                            <h4 class="text-xl font-bold mb-1" style="color: var(--color-warm-terracotta);">${item.current.title}</h4>
-                            <p class="text-sm font-semibold" style="color: var(--color-muted-plum);">${item.current.org}</p>
-                            <p class="text-xs mt-1" style="color: var(--color-deep-sage-green);">${item.current.date}</p>
-                            <div class="timeline-overlay p-4 text-center">
-                                <h4 class="text-xl font-bold mb-3">${item.current.title}</h4>
-                                <p class="text-sm mb-4">${item.current.desc}</p>
-                                <p class="font-bold text-lg mb-2" style="color: var(--color-soft-gold);">History</p>
-                                <div class="text-sm space-y-3 px-4">
-                                    ${item.history.map(hist => `
-                                        <div class="timeline-item text-left">
-                                            <p class="font-semibold">${hist.title}</p>
-                                            <p class="text-xs">${hist.org}, ${hist.date}</p>
-                                        </div>
-                                    `).join('')}
+                if (job.history && job.history.length > 0) {
+                    historyHtml = `
+                        <p class="text-sm font-semibold mt-4 mb-2" style="color: var(--muted-plum);">My Path:</p>
+                        <div class="space-y-3">
+                            ${job.history.map(h => `
+                                <div class="timeline-item">
+                                    <h4 class="font-medium text-sm" style="color: var(--dark-text);">${h.title} (${h.date})</h4>
+                                    <p class="text-xs" style="color: var(--dark-text);">${h.desc}</p>
                                 </div>
-                            </div>
-                        </div>
-                    `;
-                } else {
-                    // Handle simple items
-                    cardHtml = `
-                        <div class="card experience-card p-6 rounded-xl shadow-md cursor-pointer">
-                            <h4 class="text-xl font-bold mb-1" style="color: var(--color-warm-terracotta);">${item.title}</h4>
-                            <p class="text-sm font-semibold" style="color: var(--color-muted-plum);">${item.org}</p>
-                            <p class="text-xs mt-1" style="color: var(--color-deep-sage-green);">${item.date}</p>
-                            <div class="timeline-overlay text-center">
-                                <h4 class="text-xl font-bold mb-2">${item.title}</h4>
-                                <p class="text-sm">${item.desc}</p>
-                            </div>
+                            `).join('')}
                         </div>
                     `;
                 }
-                container.innerHTML += cardHtml;
+            } else {
+                // Simple single role
+                currentTitle = job.title;
+                currentOrg = job.org;
+                currentDate = job.date;
+                currentDesc = job.desc;
+            }
+
+            return `
+                <div class="experience-card card p-5 rounded-lg overflow-hidden">
+                    <h3 class="text-xl font-bold mb-1" style="color: var(--warm-terracotta);">${currentTitle}</h3>
+                    <p class="text-lg font-semibold" style="color: var(--muted-plum);">${currentOrg}</p>
+                    <p class="text-sm italic mb-4" style="color: var(--deep-sage-green);">${currentDate}</p>
+                    <p class="text-base">${currentDesc}</p>
+                    
+                    ${historyHtml ? `
+                        <div class="timeline-overlay">
+                            <h3 class="text-2xl font-bold mb-4" style="color: var(--muted-plum);">Path to ${currentTitle}</h3>
+                            <div class="max-h-full overflow-y-auto">
+                                ${historyHtml}
+                            </div>
+                        </div>
+                    ` : ''}
+                </div>
+            `;
+        }
+
+        // Function to render all experience tabs
+        function renderExperience() {
+            Object.keys(experienceData).forEach(key => {
+                const container = document.getElementById(`${key}-content`);
+                if (container) {
+                    container.innerHTML = experienceData[key].map(createExperienceCard).join('');
+                }
             });
-        };
+        }
 
-        /**
-         * Animates the statistics numbers when they scroll into view.
-         */
-        const animateNumbers = () => {
-            const counters = document.querySelectorAll('[data-target]');
+        // Function to handle tab switching
+        function switchTab(tabId) {
+            document.querySelectorAll('.tab-content').forEach(content => {
+                content.classList.remove('active');
+            });
+            document.querySelectorAll('.tab-button').forEach(button => {
+                button.classList.remove('active');
+            });
 
+            const newContent = document.getElementById(`${tabId}-content`);
+            const newButton = document.querySelector(`.tab-button[data-tab="${tabId}"]`);
+            
+            if (newContent) {
+                newContent.classList.add('active');
+            }
+            if (newButton) {
+                newButton.classList.add('active');
+            }
+        }
+
+        // Function to animate the number counters
+        function animateCounters() {
+            const counters = document.querySelectorAll('.counter');
             const observerOptions = {
                 root: null,
                 rootMargin: '0px',
-                threshold: 0.5 
+                threshold: 0.5 // Trigger when 50% of the element is visible
             };
 
             const observer = new IntersectionObserver((entries, observer) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
                         const counterElement = entry.target;
-                        const target = +counterElement.getAttribute('data-target');
+                        const target = parseInt(counterElement.getAttribute('data-target'));
                         let count = 0;
                         const duration = 2000; // 2 seconds
+                        const steps = 50;
+                        const stepTime = duration / steps;
+                        const increment = target / steps;
 
-                        // Calculate step size based on target and duration
-                        const step = target / (duration / 10); 
-
-                        const updateCount = () => {
+                        const timer = setInterval(() => {
+                            count += increment;
                             if (count < target) {
-                                count += step;
-                                counterElement.innerText = Math.ceil(count).toLocaleString();
-                                requestAnimationFrame(updateCount);
+                                counterElement.textContent = Math.ceil(count).toLocaleString();
                             } else {
-                                counterElement.innerText = target.toLocaleString();
-                                observer.unobserve(counterElement); // Stop observing once done
+                                counterElement.textContent = target.toLocaleString();
+                                clearInterval(timer);
                             }
-                        };
-                        updateCount();
+                        }, stepTime);
+
+                        // Once animated, stop observing
+                        observer.unobserve(counterElement);
                     }
                 });
             }, observerOptions);
@@ -521,138 +535,119 @@
             counters.forEach(counter => {
                 observer.observe(counter);
             });
-        };
 
-        /**
-         * Opens the modal showing projects related to the clicked skill.
-         * @param {string} skillId - The skill key (e.g., 'python', 'photography').
-         */
-        const openProjectModal = (skillId) => {
-            const skillData = projectData[skillId];
-            if (!skillData) return;
-
-            const modal = document.getElementById('projectModal');
-            const modalTitle = document.getElementById('projectModalTitle');
-            const modalBody = document.getElementById('projectModalBody');
-
-            modalTitle.textContent = `${skillData.name} Focus`;
-            modalBody.innerHTML = ''; // Clear previous content
-
-            skillData.projects.forEach(project => {
-                modalBody.innerHTML += `
-                    <div class="project-card p-4 rounded-lg shadow-sm">
-                        <h4 class="text-xl font-semibold mb-2" style="color: var(--color-muted-plum);">${project.title}</h4>
-                        <p class="text-sm" style="color: var(--color-dark-text);">${project.description}</p>
-                    </div>
-                `;
-            });
-
-            modal.classList.remove('opacity-0', 'pointer-events-none');
-            modal.classList.add('opacity-100');
-            modal.querySelector('.project-modal-content').classList.remove('scale-95');
-            modal.querySelector('.project-modal-content').classList.add('scale-100');
-        };
-
-        /**
-         * Closes a specified modal.
-         * @param {string} modalId - The ID of the modal element.
-         */
-        const closeModal = (modalId) => {
-            const modal = document.getElementById(modalId);
-            if (!modal) return;
-
-            // Start transition out
-            modal.classList.remove('opacity-100');
-            modal.classList.add('opacity-0');
-            modal.querySelector('.modal-content, .project-modal-content').classList.remove('scale-100');
-            modal.querySelector('.modal-content, .project-modal-content').classList.add('scale-95');
-
-            // Wait for transition to complete before making it pointer-events-none
-            setTimeout(() => {
-                modal.classList.add('pointer-events-none');
-            }, 300); 
-        };
-
-        /**
-         * Reveals elements with the .story-point class on scroll (used for fade-in effect).
-         */
-        const revealStoryPoints = () => {
+            // Also trigger CSS animation for story points
             const storyPoints = document.querySelectorAll('.story-point');
-            const observer = new IntersectionObserver((entries, observer) => {
+            const pointObserver = new IntersectionObserver((entries, observer) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
                         entry.target.classList.add('active');
-                        observer.unobserve(entry.target);
+                        pointObserver.unobserve(entry.target);
                     }
                 });
-            }, { threshold: 0.1 });
+            }, observerOptions);
 
-            storyPoints.forEach(point => observer.observe(point));
-        };
+            storyPoints.forEach(point => {
+                pointObserver.observe(point);
+            });
+        }
 
-        // --- MAIN SETUP ---
-        window.onload = () => {
-            // 1. Set current year
+        // Function to open the project modal
+        function openProjectModal(skillKey) {
+            const data = projectData[skillKey];
+            if (!data) return;
+
+            const modal = document.getElementById('projectModal');
+            const titleEl = document.getElementById('projectModalTitle');
+            const bodyEl = document.getElementById('projectModalBody');
+
+            titleEl.textContent = `${data.name} Experience`;
+            bodyEl.innerHTML = data.projects.map(p => `
+                <div class="project-card card p-5 rounded-lg">
+                    <h4 class="text-xl font-bold mb-2" style="color: var(--muted-plum);">${p.title}</h4>
+                    <p class="text-base">${p.description}</p>
+                </div>
+            `).join('');
+
+            // Show modal
+            modal.classList.remove('opacity-0', 'pointer-events-none');
+            modal.querySelector('.project-modal-content').classList.remove('scale-95');
+        }
+
+        // Function to close the project modal
+        function closeProjectModal() {
+            const modal = document.getElementById('projectModal');
+            // Hide modal using transitions
+            modal.querySelector('.project-modal-content').classList.add('scale-95');
+            setTimeout(() => {
+                modal.classList.add('opacity-0', 'pointer-events-none');
+            }, 300); // Match transition duration
+        }
+
+        // Function to toggle the LinkedIn connect modal
+        function toggleLinkedInModal(show) {
+            const modal = document.getElementById('linkedinConnectModal');
+            const content = modal.querySelector('.modal-content');
+            
+            if (show) {
+                modal.classList.remove('opacity-0', 'pointer-events-none');
+                content.classList.remove('scale-95');
+            } else {
+                content.classList.add('scale-95');
+                setTimeout(() => {
+                    modal.classList.add('opacity-0', 'pointer-events-none');
+                }, 300);
+            }
+        }
+
+
+        // --- Initialization ---
+        document.addEventListener('DOMContentLoaded', () => {
+            // Set current year in footer
             document.getElementById('year').textContent = new Date().getFullYear();
 
-            // 2. Initialize experience tabs
-            const tabButtons = document.querySelectorAll('.tab-button');
-            tabButtons.forEach(button => {
-                button.addEventListener('click', () => {
-                    // Deactivate all buttons and hide all content
-                    tabButtons.forEach(btn => btn.classList.remove('active'));
-                    document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+            // Render initial experience content
+            renderExperience();
 
-                    // Activate current button and show/render content
-                    button.classList.add('active');
-                    const tabId = button.getAttribute('data-tab');
-                    document.getElementById(`${tabId}-content`).classList.add('active');
-                    renderExperiences(tabId);
+            // Set up tab switching listeners
+            document.querySelectorAll('.tab-button').forEach(button => {
+                button.addEventListener('click', (e) => {
+                    switchTab(e.target.dataset.tab);
                 });
             });
 
-            // Render the initial active tab
-            renderExperiences('starter');
-
-            // 3. Setup skill tag clicks for project modal
+            // Set up skill tag listeners to open modal
             document.querySelectorAll('.skill-tag').forEach(tag => {
-                tag.addEventListener('click', () => {
-                    const skill = tag.getAttribute('data-skill');
-                    openProjectModal(skill);
+                tag.addEventListener('click', (e) => {
+                    openProjectModal(e.target.dataset.skill);
                 });
             });
 
-            // 4. Setup modal closing for Project Modal
-            document.getElementById('projectModalCloseButton').addEventListener('click', () => closeModal('projectModal'));
+            // Set up modal closing listeners
+            document.getElementById('projectModalCloseButton').addEventListener('click', closeProjectModal);
             document.getElementById('projectModal').addEventListener('click', (e) => {
-                if (e.target.id === 'projectModal') closeModal('projectModal');
-            });
-
-            // 5. Setup LinkedIn modal trigger and closing
-            const linkedinIconLink = document.getElementById('linkedinIconLink');
-            const linkedinModal = document.getElementById('linkedinConnectModal');
-            const linkedinModalCloseButton = document.getElementById('linkedinModalCloseButton');
-
-            linkedinIconLink.addEventListener('click', (e) => {
-                e.preventDefault(); // Prevent direct navigation
-                linkedinModal.classList.remove('opacity-0', 'pointer-events-none');
-                linkedinModal.classList.add('opacity-100');
-                linkedinModal.querySelector('.modal-content').classList.remove('scale-95');
-                linkedinModal.querySelector('.modal-content').classList.add('scale-100');
-            });
-
-            linkedinModalCloseButton.addEventListener('click', () => closeModal('linkedinConnectModal'));
-            linkedinModal.addEventListener('click', (e) => {
-                // Check if the click was on the overlay or the 'No thanks' button
-                if (e.target.id === 'linkedinConnectModal' || e.target.id === 'linkedinModalCloseButton') {
-                    closeModal('linkedinConnectModal');
+                // Close modal if user clicks outside the content
+                if (e.target.id === 'projectModal') {
+                    closeProjectModal();
                 }
             });
 
-            // 6. Start number animation and story point reveals
-            animateNumbers();
-            revealStoryPoints();
-        };
+            // Set up LinkedIn modal listeners
+            document.getElementById('openLinkedInModal').addEventListener('click', (e) => {
+                e.preventDefault();
+                toggleLinkedInModal(true);
+            });
+            document.getElementById('linkedinModalCloseButton').addEventListener('click', () => toggleLinkedInModal(false));
+            document.getElementById('linkedinConnectModal').addEventListener('click', (e) => {
+                if (e.target.id === 'linkedinConnectModal') {
+                    toggleLinkedInModal(false);
+                }
+            });
+
+
+            // Start the counter and animation observer
+            animateCounters();
+        });
     </script>
 </body>
 </html>
