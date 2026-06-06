@@ -236,7 +236,7 @@ button { font: inherit; }
   background: none; border: 0; font-size: 20px; line-height: 1;
   cursor: pointer; color: var(--ink-soft); padding: 4px 8px;
   touch-action: manipulation; -webkit-tap-highlight-color: transparent;
-  pointer-events: auto; /* always clickable regardless of parent */
+  pointer-events: auto; z-index: 50;
 }
 .pp-close:hover { color: var(--accent); }
 
