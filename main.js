@@ -76,7 +76,7 @@ const roleData = {
     ]},
     {org:'Nowhere Collective',steps:[
       {title:'Outreach Coordinator Intern',date:'2025',desc:'Developed and executed community engagement strategies, cultivating 50+ partnerships for mission-driven initiatives, learning about non-profit operations and outreach.'},
-      {title:'Lead Software Developer',date:'2025 – Present',desc:'Restructured systems for enhanced performance and scalability, designed user interface experience, and self-directed projects for the start-up’s application.'}
+      {title:'Lead Software Developer',date:'2025 – Present',desc:'Restructured systems for enhanced performance and scalability, designed user interface experience, and self-directed projects for the start-up\'s application.'}
     ]},
     {org:'Girls Who Code & Bank of America',steps:[
       {title:'Work Prep Participant',date:'July 2024',desc:'Participated in a three-week career readiness program focused on technical roles in consulting, gaining insights into transferable skills, project approaches, and growth mindset.'}
@@ -207,6 +207,7 @@ function roles(){
       const hasPrev=prev.length>0;
       const pop = hasPrev ? (
         `<div class="prev-pop">`+
+          `<button class="pp-close" aria-label="Close">&times;</button>`+
           `<div class="pp-head">Previously${e.org?` at ${e.org}`:''}</div>`+
           prev.map(s=>(
             `<div class="pp-step">`+
@@ -231,6 +232,7 @@ function roles(){
       `<div class="role-exp">${exp}</div>`;
     // touch / keyboard: tap or Enter toggles the progression popup open
     disp.querySelectorAll('.x.has-prev').forEach(x=>{
+      x.querySelector('.pp-close')?.addEventListener('click', e => { e.stopPropagation(); x.classList.remove('open'); });
       x.addEventListener('click',()=>x.classList.toggle('open'));
       x.addEventListener('keydown',ev=>{ if(ev.key==='Enter'||ev.key===' '){ ev.preventDefault(); x.classList.toggle('open'); } });
     });
