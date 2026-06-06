@@ -232,7 +232,7 @@ function roles(){
       `<div class="role-exp">${exp}</div>`;
     // touch / keyboard: tap or Enter toggles the progression popup open
     disp.querySelectorAll('.x.has-prev').forEach(x=>{
-      x.querySelector('.pp-close')?.addEventListener('click', e => { e.stopPropagation(); x.classList.remove('open'); });
+      x.querySelector('.pp-close')?.addEventListener('mousedown', e => { e.stopPropagation(); e.preventDefault(); x.classList.remove('open'); }); x.querySelector('.pp-close')?.addEventListener('touchend', e => { e.stopPropagation(); e.preventDefault(); x.classList.remove('open'); });
       x.addEventListener('click',()=>x.classList.toggle('open'));
       x.addEventListener('keydown',ev=>{ if(ev.key==='Enter'||ev.key===' '){ ev.preventDefault(); x.classList.toggle('open'); } });
     });
