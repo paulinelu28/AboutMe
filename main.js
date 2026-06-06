@@ -232,10 +232,13 @@ function roles(){
       `<div class="role-exp">${exp}</div>`;
     // touch / keyboard: tap or Enter toggles the progression popup open
     disp.querySelectorAll('.x.has-prev').forEach(x=>{
-      x.querySelector('.pp-close')?.addEventListener('mousedown', e => { e.stopPropagation(); e.preventDefault(); x.classList.remove('open'); }); x.querySelector('.pp-close')?.addEventListener('touchend', e => { e.stopPropagation(); e.preventDefault(); x.classList.remove('open'); });
-      x.addEventListener('click',()=>x.classList.toggle('open'));
-      x.addEventListener('keydown',ev=>{ if(ev.key==='Enter'||ev.key===' '){ ev.preventDefault(); x.classList.toggle('open'); } });
-    });
+  const closeBtn = x.querySelector('.pp-close');
+  closeBtn?.addEventListener('mousedown', e => { e.stopPropagation(); e.preventDefault(); });
+  closeBtn?.addEventListener('touchstart', e => { e.stopPropagation(); e.preventDefault(); x.classList.remove('open'); }, {passive:false});
+  closeBtn?.addEventListener('click', e => { e.stopPropagation(); e.preventDefault(); x.classList.remove('open'); });
+  x.addEventListener('click', e => { if(e.target === closeBtn) return; x.classList.toggle('open'); });
+  x.addEventListener('keydown',ev=>{ if(ev.key==='Enter'||ev.key===' '){ ev.preventDefault(); x.classList.toggle('open'); } });
+});
   };
   tabs.forEach(t=>{
     const go=()=>render(t.dataset.role);
