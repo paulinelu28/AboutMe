@@ -6,15 +6,19 @@ document.body.classList.add('js');
 /* ---------- DATA ---------- */
 const projectData = {
   python:{name:'Python',projects:[
-    {title:'IT Systems Automation',description:'Streamlined data management for 100+ schools by automating critical daily processes using Python, SQL, and Docker at National Heritage Academies.'},
+    {title:'Agentic AI Workflow (Patent Pending)',description:'Built a multi-agent AI pipeline at Bank of America that synthesizes Jira tickets, documentation, and source code into a centralized knowledge base, generating system-accurate user stories and cutting creation time by 60%+.'},
+    {title:'IT Systems Automation',description:'Streamlined data management for 100+ schools by automating critical daily processes using Python and SQL to automate data transfers between Oracle and OnBase at National Heritage Academies.'},
     {title:'Cybersecurity & Cryptography',description:'Completed a comprehensive course series in Cybersecurity and Cryptography using Python as part of the Girls Who Code Self-Paced Program.'},
     {title:'Data Science For Good',description:'Utilized Python in data science projects focused on social impact, covering data analysis, visualization, and modeling with Girls Who Code.'}]},
   sql:{name:'SQL',projects:[
+    {title:'Executive Financial Dashboard',description:'Connected a production dashboard at Bank of America to an Oracle database aggregating 3 data sources via REST APIs to track $5M+ in funding.'},
     {title:'Enterprise Database Management',description:'Utilized SQL to perform database management and streamline data processes with Oracle and OnBase systems during an IT & ERP Systems internship at National Heritage Academies.'}]},
   javascript:{name:'JavaScript',projects:[
+    {title:'Executive Financial Dashboard',description:'Built and deployed the front end of an executive project planning dashboard at Bank of America in HTML, CSS, and JavaScript through the full Agile SDLC.'},
     {title:'Interactive Web Development',description:'Learned and implemented web development with HTML, CSS, and JavaScript in the Girls Who Code Summer Immersion Program.'},
     {title:'Web Project Portfolio',description:'Designed and coded a personal website, a digital interactive quiz, and an advocacy website using modern web technologies.'}]},
   html_css:{name:'HTML/CSS',projects:[
+    {title:'Executive Financial Dashboard',description:'Designed and built the front end of a production executive dashboard at Bank of America tracking $5M+ in funding for senior stakeholders.'},
     {title:'User-Friendly OnBase Forms',description:'Converted and created 5+ user-friendly HTML forms for the OnBase enterprise information platform at National Heritage Academies.'},
     {title:'Web Development Foundations',description:'Built multiple websites and web applications, focusing on structure (HTML) and styling (CSS) with Girls Who Code.'}]},
   matlab:{name:'MATLAB',projects:[
@@ -48,9 +52,12 @@ const projectData = {
 };
 
 const roleData = {
-  starter:{n:'01',title:'Starter',glyph:'squares',desc:'Initiating new ventures and founding communities',exp:[
+  innovator:{n:'01',title:'Innovator',glyph:'squares',desc:'Building new solutions, initiating ventures, and founding communities',exp:[
+    {org:'Bank of America',steps:[
+      {title:'Agentic AI Workflow — Patent Pending',date:'Summer 2026',desc:'Built a patent-pending agentic AI workflow and automated multi-agent pipeline that synthesizes Jira tickets, documentation, and source code into a centralized knowledge base, generating system-accurate user stories and reducing creation time by 60%+.'}
+    ]},
     {org:'Girls Who Code College Loop',steps:[
-      {title:'Founder & President',date:'2023 – Present',desc:'Organized and led a 50+ member community to close the gender gap in computing by providing resources, programming, and a community that empowers and educates women in coding. Oversee mentorship pairings, connect with and host alumni and professionals, and lead coding projects.'}
+      {title:'Founder & President',date:'2023 – 2026',desc:'Founded and led a 50+ member community to close the gender gap in computing through resources, technical programming, and an empowering community for women pursuing careers in technology. Mentored underclassmen in technical interview prep and course planning, and organized networking sessions with alumni and industry professionals.'}
     ]},
     {org:'LeadTheWay Summer Program',steps:[
       {title:'Co-founder & Instructor',date:'Summer 2024',desc:'Created a summer program for middle schoolers to develop public speaking, critical thinking, leadership, debate and writing skills through STEM exploration.'}
@@ -60,32 +67,36 @@ const roleData = {
     ]}
   ]},
   leader:{n:'02',title:'Leader',glyph:'rings',desc:'Guiding teams and driving mission-driven initiatives',exp:[
-    {org:'Calvin University',steps:[
-      {title:'Residential Hall President',date:'2024 – Present',desc:'Led and managed a team to plan and execute events, programs, and services that foster community and belonging for 450+ residents. Oversee budgeting, marketing, and logistics, collaborate with campus organizations, and facilitate open communication.'}
-    ]},
     {org:'Calvin University Student Senate',steps:[
       {title:'Senator',date:'2023 – 2025',desc:'Represented and advocated for the student body to achieve positive change. Worked closely with university administration on Governance Committees to tackle concerns and enhance the student experience.'},
-      {title:'VP of Marketing & Communication',date:'2025',desc:'Led marketing campaigns and communication strategies to enhance student engagement and transparency across campus.'},
-      {title:'Student Body President',date:'2025 – Present',desc:'Lead and represent the entire student body — partnering with administration to advance student priorities, guide senate initiatives, and champion transparency and engagement across campus.'}
+      {title:'VP of Marketing & Communication',date:'2025 – 2026',desc:'Created 50+ social media posts and promotional materials reaching 40,000+ accounts and increasing engagement by 185.71%.'},
+      {title:'Student Body President',date:'2026 – 2027',desc:'Work closely with university administration to advocate for a 3,500+ student body, setting strategic priorities and leading a cross-functional executive cabinet of vice presidents and advisors.'}
+    ]},
+    {org:'Calvin University Residence Hall',steps:[
+      {title:'Residential Hall President',date:'2024 – 2025',desc:'Led a cross-functional executive team to plan and execute 20+ events, programs, and services that fostered community and belonging for 450+ residents. Oversaw a $900+ budget, marketing, and event logistics while collaborating with campus organizations and administrative departments.'}
     ]}
   ]},
   learner:{n:'03',title:'Learner',glyph:'tri',desc:'Continuously growing through diverse experiences',exp:[
+    {org:'Bank of America',steps:[
+      {title:'GWC × BofA Work Prep Participant',date:'July 2024',desc:'Participated in a three-week Girls Who Code career readiness program focused on technical roles in consulting, gaining insights into transferable skills, project approaches, and growth mindset.'},
+      {title:'Global Technology Summer Analyst',date:'Summer 2026',desc:'Led an executive project planning financial dashboard through the full Agile SDLC — conducting stakeholder interviews, building the front end in HTML/JavaScript/CSS, and deploying to production. Connected it to an Oracle database aggregating 3 data sources via REST APIs to track $5M+ in funding for senior business stakeholders.'}
+    ]},
+    {org:'Calvin University AI Research',steps:[
+      {title:'Lead Researcher, Undergraduate AI Use Study',date:'2026 – Present',desc:'Leading an IRB-approved, mixed-methods study on undergraduate AI use with 300+ survey responses and 15 qualitative interviews. Presented Phase 1 findings to the university AI Steering Committee and selected to present at the Wisdom in the Age of AI conference (October 2026).'}
+    ]},
     {org:'National Heritage Academies',steps:[
-      {title:'IT ERP & Business Systems Intern',date:'Summer 2025',desc:'Streamlined data management for 100+ schools by automating critical daily processes using SQL, Python, and Docker, gaining hands-on experience in enterprise systems.'},
-      {title:'IT Enterprise Engineer',date:'2025 – 2026',desc:'Integrated AI into IT teams to increase efficiency and automate the mundane, practicing project and change management and creating automations with Power Automate.'}
+      {title:'IT ERP & Business Systems Intern',date:'Summer 2025',desc:'Built SQL and Python scripts to securely automate daily batch data transfers between Oracle and OnBase across 100+ schools. Translated C# logic to pseudocode and improved OnBase forms and digital records on Azure through HTML conversions and design enhancements.'},
+      {title:'Enterprise Application Engineer',date:'2025 – 2026',desc:'Led the strategic integration of LLMs and AI across 8+ IT teams using Agile project management, and developed custom AI tools and prompt engineering to automate manual processes — bridging technical developers and business units across the full project lifecycle.'}
     ]},
     {org:'Nowhere Collective',steps:[
-      {title:'Outreach Coordinator Intern',date:'2025',desc:'Developed and executed community engagement strategies, cultivating 50+ partnerships for mission-driven initiatives, learning about non-profit operations and outreach.'},
-      {title:'Lead Software Developer',date:'2025 – Present',desc:'Restructured systems for enhanced performance and scalability, designed user interface experience, and self-directed projects for the start-up\'s application.'}
-    ]},
-    {org:'Girls Who Code & Bank of America',steps:[
-      {title:'Work Prep Participant',date:'July 2024',desc:'Participated in a three-week career readiness program focused on technical roles in consulting, gaining insights into transferable skills, project approaches, and growth mindset.'}
+      {title:'Outreach Coordinator',date:'2025',desc:'Developed and executed community engagement strategies, cultivating 50+ strategic partnerships that expanded the mission-driven startup\'s reach and impact.'},
+      {title:'Lead Software Developer & Project Manager',date:'2025 – 2026',desc:'Transformed the application codebase by resolving critical functionality gaps and restructuring core systems for performance, scalability, and intuitive design, while managing two teams of 10+ developers and UI/UX designers.'}
     ]}
   ]},
   connector:{n:'04',title:'Connector',glyph:'link',desc:'Building bridges between people and opportunities',exp:[
     {org:'Calvin University Admissions',steps:[
-      {title:'Student Caller',date:'2023 – 2024',desc:'Initiated contact with prospective students, shared key information about the university, and meticulously logged valuable data in the admissions database.'},
-      {title:'University Guide',date:'2023 – Present',desc:'Represent the institution by enthusiastically connecting with prospective students and their families, guiding them through campus and sharing personal experiences to foster a welcoming environment.'}
+      {title:'Student Caller',date:'2023 – 2026',desc:'Initiated contact with prospective students, shared key information about the university, and logged valuable data in the admissions database.'},
+      {title:'University Tour Guide',date:'2023 – 2026',desc:'Represented the institution by connecting with 500+ prospective students and families, leading engaging campus tours that present academic programs and student life while adapting to diverse audiences and coordinating events.'}
     ]},
     {org:'Carnegie Assisted Living',steps:[
       {title:'Activities Coordinator',date:'Summer 2023, 2024',desc:'Created engaging and stimulating activities for people with memory loss, patiently practicing adaptability and building relationships to foster a positive atmosphere.'}
@@ -194,6 +205,8 @@ function roles(){
   const glyph=document.getElementById('roleGlyph');
   if(!disp) return;
   let current=null;
+  const hoverWord = matchMedia('(hover: hover)').matches ? 'hover' : 'tap';
+  if(hoverWord==='tap'){ const note=document.querySelector('#roles .note'); if(note) note.textContent='Tap a role to see my progression'; }
   const render=key=>{
     const r=roleData[key];
     if(!r || key===current) return;
@@ -221,7 +234,7 @@ function roles(){
         `<div class="xtop"><span class="org">${e.org}</span><span class="date">${now.date}</span></div>`+
         `<div class="role-now"><span class="rn-title">${now.title}</span>${hasPrev?'<span class="rn-tag">↑ now</span>':''}</div>`+
         `<div class="xd">${now.desc}</div>`+
-        (hasPrev?`<span class="prev-hint mono"><span class="ph-dot"></span>${prev.length} earlier role${prev.length>1?'s':''} — hover to see progression</span>`:'')+
+        (hasPrev?`<span class="prev-hint mono"><span class="ph-dot"></span>${prev.length} earlier role${prev.length>1?'s':''} — ${hoverWord} to see progression</span>`:'')+
         pop+
       `</div>`;
     }).join('');
@@ -232,13 +245,16 @@ function roles(){
       `<div class="role-exp">${exp}</div>`;
     // touch / keyboard: tap or Enter toggles the progression popup open
     disp.querySelectorAll('.x.has-prev').forEach(x=>{
-  const closeBtn = x.querySelector('.pp-close');
-  closeBtn?.addEventListener('mousedown', e => { e.stopPropagation(); e.preventDefault(); });
-  closeBtn?.addEventListener('touchstart', e => { e.stopPropagation(); e.preventDefault(); x.classList.remove('open'); }, {passive:false});
-  closeBtn?.addEventListener('click', e => { e.stopPropagation(); e.preventDefault(); x.classList.remove('open'); });
-  x.addEventListener('click', e => { if(e.target === closeBtn) return; x.classList.toggle('open'); });
-  x.addEventListener('keydown',ev=>{ if(ev.key==='Enter'||ev.key===' '){ ev.preventDefault(); x.classList.toggle('open'); } });
-});
+      const closeBtn = x.querySelector('.pp-close');
+      // .dismissed hides the popup even while :hover / :focus-within still match (sticky on touch)
+      const setOpen = on => { x.classList.toggle('open', on); x.classList.toggle('dismissed', !on); if(!on) x.blur(); };
+      closeBtn?.addEventListener('mousedown', e => { e.stopPropagation(); e.preventDefault(); });
+      closeBtn?.addEventListener('click', e => { e.stopPropagation(); e.preventDefault(); setOpen(false); });
+      x.addEventListener('click', () => setOpen(!x.classList.contains('open')));
+      x.addEventListener('keydown', ev => { if(ev.key==='Enter'||ev.key===' '){ ev.preventDefault(); setOpen(!x.classList.contains('open')); } else if(ev.key==='Escape') setOpen(false); });
+      x.addEventListener('mouseleave', () => x.classList.remove('dismissed'));
+      x.addEventListener('focusout', e => { if(!x.contains(e.relatedTarget)) x.classList.remove('open','dismissed'); });
+    });
   };
   tabs.forEach(t=>{
     const go=()=>render(t.dataset.role);
@@ -247,7 +263,7 @@ function roles(){
     t.addEventListener('pointerenter',go);
     t.addEventListener('focus',go);
   });
-  render('starter');
+  render('innovator');
 }
 
 /* ---------- SKILLS ---------- */

@@ -217,11 +217,14 @@ button { font: inherit; }
   background: var(--paper); border-left: 1px solid var(--line-2); border-top: 1px solid var(--line-2);
   transform: rotate(45deg);
 }
-.role-exp .x.has-prev:hover .prev-pop,
+@media (hover: hover){
+  .role-exp .x.has-prev:hover .prev-pop { opacity: 1; visibility: visible; transform: translateY(0); pointer-events: auto; }
+}
 .role-exp .x.has-prev:focus-within .prev-pop,
 .role-exp .x.has-prev.open .prev-pop {
   opacity: 1; visibility: visible; transform: translateY(0); pointer-events: auto;
 }
+.role-exp .x.has-prev.dismissed .prev-pop { opacity: 0; visibility: hidden; transform: translateY(-6px); pointer-events: none; }
 .prev-pop .pp-head { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); border-bottom: 1px solid var(--line); padding-bottom: 9px; }
 .prev-pop .pp-step { display: grid; gap: 4px; }
 .prev-pop .pp-step + .pp-step { border-top: 1px solid var(--line); padding-top: 11px; }
@@ -303,6 +306,7 @@ button { font: inherit; }
   .role-tabs { flex-direction: row; flex-wrap: wrap; border-top: 0; gap: 0; }
   .role-tab { border: 1px solid var(--line); padding: 12px 14px; }
   .cat { grid-template-columns: 1fr; gap: 14px; }
+  .side-links a { padding: 14px 4px; }
 }
 @media (max-width: 560px){
   .stats-grid { grid-template-columns: 1fr 1fr; }
